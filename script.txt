@@ -1,0 +1,92 @@
+http://filldb.info/dummy/step1
+Zmienić timestamp i boolean bo to MySQL
+
+create table RSI_AUDITORIUM
+(
+	ID INTEGER not null
+		primary key,
+	NAME VARCHAR(30) not null,
+	SEATS_NUMBER INTEGER not null
+)
+;
+
+create table RSI_CLIENT
+(
+	ID INTEGER not null
+		primary key,
+	USERNAME VARCHAR(30) not null,
+	PASSWORD VARCHAR(30) not null
+)
+;
+
+create table RSI_MOVIE
+(
+	ID INTEGER not null
+		primary key,
+	TITLE VARCHAR(100) not null,
+	DIRECTOR VARCHAR(100) not null,
+	ACTORS VARCHAR(1000),
+	DESCRIPTION VARCHAR(1000),
+	DURATION INTEGER
+)
+;
+
+create table RSI_SEAT
+(
+	ID INTEGER not null
+		primary key,
+	SEAT_ROW INTEGER not null,
+	SEAT_NUMBER INTEGER not null,
+	AUDITORIUM_ID INTEGER not null
+		constraint RSI_SEAT_RSI_AUDITORIUM_ID_FK
+			references RSI_AUDITORIUM
+)
+;
+
+create table RSI_SCREENING
+(
+	ID INTEGER not null
+		primary key,
+	MOVIE_ID INTEGER not null
+		constraint RSI_SCREENING_RSI_MOVIE_ID_FK
+			references RSI_MOVIE,
+	AUDITORIUM_ID INTEGER not null
+		constraint RSI_SCREENING_RSI_AUDITORIUM_ID_FK
+			references RSI_AUDITORIUM,
+	SCREENING_START TIMESTAMP(9)
+)
+;
+
+create table RSI_RESERVATION
+(
+	ID INTEGER not null
+		primary key,
+	SCREENING_ID INTEGER not null
+		constraint RSI_RESERVATION_RSI_SCREENING_ID_FK
+			references RSI_SCREENING,
+	CLIENT_RESERVER_ID INTEGER not null
+		constraint RSI_RESERVATION_RSI_CLIENT_ID_FK
+			references RSI_CLIENT,
+	RESERVATION_CONTACT VARCHAR(1024),
+	RESERVED BOOLEAN(1),
+	ACTIVE BOOLEAN(1)
+)
+;
+
+
+create table RSI_SEAT_RESERVED
+(
+	ID INTEGER not null
+		primary key,
+	SEAT_ID INTEGER not null
+		constraint SEAT_RESERVED_RSI_SEAT_ID_FK
+			references RSI_SEAT,
+	RESERVATION_ID INTEGER not null
+		constraint RSI_SEAT_RESERVED_RSI_RESERVATION_ID_FK
+			references RSI_RESERVATION,
+	SCREENING_ID INTEGER not null
+		constraint SEAT_RESERVED_RSI_SCREENING_ID_FK
+			references RSI_SCREENING
+)
+;
+
