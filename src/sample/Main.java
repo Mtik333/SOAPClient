@@ -13,6 +13,7 @@ public class Main extends Application {
         System.setProperty("javax.net.ssl.trustStore","D:\\RSI_PS6");
         System.setProperty("javax.net.ssl.trustStorePassword","herbata");
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        System.out.println("a");
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
