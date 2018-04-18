@@ -24,6 +24,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _DownloadImage_QNAME = new QName("http://soapserv.mycompany.com/", "downloadImage");
     private final static QName _RsiReservation_QNAME = new QName("http://soapserv.mycompany.com/", "rsiReservation");
     private final static QName _RsiSeat_QNAME = new QName("http://soapserv.mycompany.com/", "rsiSeat");
     private final static QName _GetProducts_QNAME = new QName("http://soapserv.mycompany.com/", "getProducts");
@@ -32,6 +33,7 @@ public class ObjectFactory {
     private final static QName _RsiMovie_QNAME = new QName("http://soapserv.mycompany.com/", "rsiMovie");
     private final static QName _InvalidPasswordException_QNAME = new QName("http://soapserv.mycompany.com/", "InvalidPasswordException");
     private final static QName _AuthenticateClientResponse_QNAME = new QName("http://soapserv.mycompany.com/", "authenticateClientResponse");
+    private final static QName _DownloadImageResponse_QNAME = new QName("http://soapserv.mycompany.com/", "downloadImageResponse");
     private final static QName _GetMoviesResponse_QNAME = new QName("http://soapserv.mycompany.com/", "getMoviesResponse");
     private final static QName _GetMovies_QNAME = new QName("http://soapserv.mycompany.com/", "getMovies");
     private final static QName _GetReservedSeats_QNAME = new QName("http://soapserv.mycompany.com/", "getReservedSeats");
@@ -157,6 +159,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DownloadImageResponse }
+     * 
+     */
+    public DownloadImageResponse createDownloadImageResponse() {
+        return new DownloadImageResponse();
+    }
+
+    /**
      * Create an instance of {@link GetReservations }
      * 
      */
@@ -194,6 +204,14 @@ public class ObjectFactory {
      */
     public GetProducts createGetProducts() {
         return new GetProducts();
+    }
+
+    /**
+     * Create an instance of {@link DownloadImage }
+     * 
+     */
+    public DownloadImage createDownloadImage() {
+        return new DownloadImage();
     }
 
     /**
@@ -293,6 +311,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DownloadImage }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "downloadImage")
+    public JAXBElement<DownloadImage> createDownloadImage(DownloadImage value) {
+        return new JAXBElement<DownloadImage>(_DownloadImage_QNAME, DownloadImage.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RsiReservation }{@code >}}
      * 
      */
@@ -362,6 +389,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "authenticateClientResponse")
     public JAXBElement<AuthenticateClientResponse> createAuthenticateClientResponse(AuthenticateClientResponse value) {
         return new JAXBElement<AuthenticateClientResponse>(_AuthenticateClientResponse_QNAME, AuthenticateClientResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DownloadImageResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "downloadImageResponse")
+    public JAXBElement<DownloadImageResponse> createDownloadImageResponse(DownloadImageResponse value) {
+        return new JAXBElement<DownloadImageResponse>(_DownloadImageResponse_QNAME, DownloadImageResponse.class, null, value);
     }
 
     /**

@@ -1,7 +1,6 @@
-package sample;
+package controllers;
 
 import com.mycompany.soapserv.HelloWorld;
-import com.mycompany.soapserv.HelloWorldImplService;
 import com.mycompany.soapserv.InvalidPasswordException_Exception;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,16 +9,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
 import javax.xml.ws.handler.MessageContext;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 
@@ -54,7 +50,7 @@ public class Controller implements Initializable {
         req_ctx.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
         boolean okay = hello.authenticateClient();
         int i=0;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxmls/FXMLDocument.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("ABC");

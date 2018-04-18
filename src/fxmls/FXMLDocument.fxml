@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="461.0" prefWidth="502.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXMLDocumentController">
+   <children>
+       <MenuBar prefHeight="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+          <menus>
+              <Menu mnemonicParsing="false" text="File">
+                 <items>
+                     <MenuItem mnemonicParsing="false" text="Load dataset from file" />
+                     <MenuItem mnemonicParsing="false" text="Load sample dataset" />
+                     <MenuItem mnemonicParsing="false" text="Set separator" />
+                     <MenuItem fx:id="closeButton" mnemonicParsing="false" text="Exit" />
+                 </items>
+              </Menu>
+              <Menu mnemonicParsing="false" text="Options">
+                 <items>
+                     <MenuItem mnemonicParsing="false" text="Algorithm settings" />
+                 </items>
+              </Menu>
+          </menus>
+       </MenuBar>
+      <Pane layoutY="25.0" prefHeight="437.0" prefWidth="502.0">
+         <children>
+            <Label layoutY="6.0" prefHeight="32.0" prefWidth="380.0" text="Movies available in cinema" />
+            <ListView fx:id="listView" layoutY="35.0" prefHeight="400.0" prefWidth="502.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
