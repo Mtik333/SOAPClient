@@ -1,6 +1,8 @@
 
 package com.mycompany.soapserv;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -16,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="rsiScreeningCollection" type="{http://soapserv.mycompany.com/}rsiScreening" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="actors" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="director" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -32,6 +35,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "rsiMovie", propOrder = {
+    "rsiScreeningCollection",
     "actors",
     "description",
     "director",
@@ -41,12 +45,42 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class RsiMovie {
 
+    protected List<RsiScreening> rsiScreeningCollection;
     protected String actors;
     protected String description;
     protected String director;
     protected Integer duration;
     protected Integer id;
     protected String title;
+
+    /**
+     * Gets the value of the rsiScreeningCollection property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the rsiScreeningCollection property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getRsiScreeningCollection().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link RsiScreening }
+     * 
+     * 
+     */
+    public List<RsiScreening> getRsiScreeningCollection() {
+        if (rsiScreeningCollection == null) {
+            rsiScreeningCollection = new ArrayList<RsiScreening>();
+        }
+        return this.rsiScreeningCollection;
+    }
 
     /**
      * Gets the value of the actors property.

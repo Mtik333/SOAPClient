@@ -52,6 +52,7 @@ public class FXMLDocumentController implements Initializable {
                 @Override
                 public void handle(ActionEvent event) {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxmls/MovieDetails.fxml"));
+                    MovieDetailsController.movie=FXMLDocumentController.findMovie(lastItem);
                     Parent root1 = null;
                     try {
                         root1 = (Parent) fxmlLoader.load();
@@ -61,9 +62,9 @@ public class FXMLDocumentController implements Initializable {
                     Stage stage = new Stage();
                     stage.setTitle("Movie details");
                     stage.setScene(new Scene(root1));
-                    MovieDetailsController controller =
-                            fxmlLoader.<MovieDetailsController>getController();
-                    controller.setMovie(FXMLDocumentController.findMovie(lastItem));
+//                    MovieDetailsController controller =
+//                            fxmlLoader.<MovieDetailsController>getController();
+//                    controller.setMovie(FXMLDocumentController.findMovie(lastItem));
                     stage.show();
                 }
             });

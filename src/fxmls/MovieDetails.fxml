@@ -7,7 +7,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MovieDetailsController">
    <children>
       <HBox prefHeight="400.0" prefWidth="600.0">
@@ -18,24 +17,24 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Label" />
-                        <TextField />
+                        <Label text="Title" />
+                        <TextField fx:id="titleTextField" />
                      </children>
                   </HBox>
                   <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Label" />
-                        <TextField />
+                        <Label text="Actors" />
+                        <TextField fx:id="actorsTextField" />
                      </children>
                   </HBox>
                   <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Label" />
-                        <TextField />
+                        <Label text="Director" />
+                        <TextField fx:id="directorTextField" />
                      </children>
                   </HBox>
-                  <Label text="Label" />
-                  <ListView prefHeight="200.0" prefWidth="200.0" />
+                  <Label text="Screenings" />
+                  <ListView fx:id="screeningsListView" prefHeight="200.0" prefWidth="200.0" />
                </children>
             </VBox>
          </children>
