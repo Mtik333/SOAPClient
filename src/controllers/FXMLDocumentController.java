@@ -2,6 +2,7 @@ package controllers;
 
 import com.mycompany.soapserv.HelloWorld;
 import com.mycompany.soapserv.RsiMovie;
+import com.mycompany.soapserv.RsiScreening;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,6 +29,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 

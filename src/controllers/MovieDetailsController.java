@@ -28,9 +28,8 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MovieDetailsController implements Initializable {
@@ -46,8 +45,7 @@ public class MovieDetailsController implements Initializable {
     public TextField actorsTextField;
     @FXML
     public ListView screeningsListView;
-
-    static List<RsiScreening> screeningList = new ArrayList<>();
+    static Map<RsiScreening, RsiAuditorium> mapScreeningAuditorium = new HashMap<>();
 
     static class XCell extends ListCell<String> {
         HBox hbox = new HBox();
@@ -63,20 +61,19 @@ public class MovieDetailsController implements Initializable {
             button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-//                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxmls/MovieDetails.fxml"));
-//                    Parent root1 = null;
-//                    try {
-//                        root1 = (Parent) fxmlLoader.load();
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                    Stage stage = new Stage();
-//                    stage.setTitle("Movie details");
-//                    stage.setScene(new Scene(root1));
-//                    MovieDetailsController controller =
-//                            fxmlLoader.<MovieDetailsController>getController();
-//
-//                    stage.show();
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxmls/SeatDetails.fxml"));
+                    SeatDetails.rsiScreening=findScreening(lastItem).getKey();
+                    SeatDetails.rsiAuditorium=findScreening(lastItem).getValue();
+                    Parent root1 = null;
+                    try {
+                        root1 = (Parent) fxmlLoader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Stage stage = new Stage();
+                    stage.setTitle("Seat details");
+                    stage.setScene(new Scene(root1));
+                    stage.show();
                 }
             });
         }
@@ -98,6 +95,7 @@ public class MovieDetailsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        mapScreeningAuditorium = new HashMap<>();
         URL url = null;
         try {
             url = new URL("https://localhost:8443/SOAPServer/HelloWorldImplService?wsdl");
@@ -113,22 +111,44 @@ public class MovieDetailsController implements Initializable {
         titleTextField.setText(movie.getTitle());
         directorTextField.setText(movie.getDirector());
         actorsTextField.setText(movie.getActors());
-
         List<RsiScreening> screeningCollection = movie.getRsiScreeningCollection();
-        screeningList = screeningCollection;
+        for (RsiScreening rsiScreening : screeningCollection){
+            getAuditoriumNames(hello,rsiScreening);
+        }
+        List<String> titles = new ArrayList<>();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm");
+        String date;
+        for (Map.Entry<RsiScreening,RsiAuditorium> entry : mapScreeningAuditorium.entrySet()){
+            date = sdf.format(entry.getKey().getScreeningStart().toGregorianCalendar().getTime());
+            titles.add(entry.getValue().getName()+"\t\t"+date);
+        }
+        ObservableList<String> list = FXCollections.observableArrayList(titles);
+        screeningsListView.setItems(list);
+        screeningsListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+            @Override
+            public ListCell<String> call(ListView<String> param) {
+                return new XCell();
+            }
+        });
+    }
 
+    private void getAuditoriumNames(HelloWorld helloWorld, RsiScreening screening){
+        List<RsiAuditorium> auditoriums = helloWorld.getAuditoriums();
+        for (RsiAuditorium auditorium : auditoriums){
+            Optional<RsiScreening> test = auditorium.getRsiScreeningCollection().stream().filter(screen -> screen.getId().equals(screening.getId())).findFirst();
+            if (test.isPresent()){
+                mapScreeningAuditorium.put(test.get(),auditorium);
+            }
+        }
+    }
 
-//        List<RsiAuditorium> auditoriums = screeningList.stream().map(RsiScreening::getAuditoriumId).collect(Collectors.toList());
-//
-//        List<String> titles = screeningList.stream().map(RsiScreening::getAuditoriumId).map(RsiAuditorium::getName).collect(Collectors.toList());
-//        ObservableList<String> list = FXCollections.observableArrayList(titles);
-//        screeningsListView.setItems(list);
-//        screeningsListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-//            @Override
-//            public ListCell<String> call(ListView<String> param) {
-//                return new XCell();
-//            }
-//        });
-
+    private static Map.Entry<RsiScreening, RsiAuditorium> findScreening(String name){
+        for (Map.Entry<RsiScreening,RsiAuditorium> entry : mapScreeningAuditorium.entrySet()){
+            String test = name.split("\t")[0];
+            if (entry.getValue().getName().contentEquals(test)){
+                return entry;
+            }
+        }
+        return null;
     }
 }

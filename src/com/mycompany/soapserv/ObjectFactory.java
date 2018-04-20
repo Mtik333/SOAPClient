@@ -42,6 +42,7 @@ public class ObjectFactory {
     private final static QName _GetHelloWorldAsStringResponse_QNAME = new QName("http://soapserv.mycompany.com/", "getHelloWorldAsStringResponse");
     private final static QName _GetClients_QNAME = new QName("http://soapserv.mycompany.com/", "getClients");
     private final static QName _GetProductsResponse_QNAME = new QName("http://soapserv.mycompany.com/", "getProductsResponse");
+    private final static QName _CreateReservation_QNAME = new QName("http://soapserv.mycompany.com/", "createReservation");
     private final static QName _GetAuditoriums_QNAME = new QName("http://soapserv.mycompany.com/", "getAuditoriums");
     private final static QName _GetHelloWorldAsString_QNAME = new QName("http://soapserv.mycompany.com/", "getHelloWorldAsString");
     private final static QName _RsiSeatReserved_QNAME = new QName("http://soapserv.mycompany.com/", "rsiSeatReserved");
@@ -54,6 +55,7 @@ public class ObjectFactory {
     private final static QName _RsiAuditorium_QNAME = new QName("http://soapserv.mycompany.com/", "rsiAuditorium");
     private final static QName _AuthenticateClient_QNAME = new QName("http://soapserv.mycompany.com/", "authenticateClient");
     private final static QName _GetSeatsResponse_QNAME = new QName("http://soapserv.mycompany.com/", "getSeatsResponse");
+    private final static QName _CreateReservationResponse_QNAME = new QName("http://soapserv.mycompany.com/", "createReservationResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.mycompany.soapserv
@@ -84,6 +86,14 @@ public class ObjectFactory {
      */
     public RsiSeatReserved createRsiSeatReserved() {
         return new RsiSeatReserved();
+    }
+
+    /**
+     * Create an instance of {@link CreateReservation }
+     * 
+     */
+    public CreateReservation createCreateReservation() {
+        return new CreateReservation();
     }
 
     /**
@@ -228,6 +238,14 @@ public class ObjectFactory {
      */
     public RsiSeat createRsiSeat() {
         return new RsiSeat();
+    }
+
+    /**
+     * Create an instance of {@link CreateReservationResponse }
+     * 
+     */
+    public CreateReservationResponse createCreateReservationResponse() {
+        return new CreateReservationResponse();
     }
 
     /**
@@ -473,6 +491,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateReservation }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "createReservation")
+    public JAXBElement<CreateReservation> createCreateReservation(CreateReservation value) {
+        return new JAXBElement<CreateReservation>(_CreateReservation_QNAME, CreateReservation.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetAuditoriums }{@code >}}
      * 
      */
@@ -578,6 +605,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getSeatsResponse")
     public JAXBElement<GetSeatsResponse> createGetSeatsResponse(GetSeatsResponse value) {
         return new JAXBElement<GetSeatsResponse>(_GetSeatsResponse_QNAME, GetSeatsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateReservationResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "createReservationResponse")
+    public JAXBElement<CreateReservationResponse> createCreateReservationResponse(CreateReservationResponse value) {
+        return new JAXBElement<CreateReservationResponse>(_CreateReservationResponse_QNAME, CreateReservationResponse.class, null, value);
     }
 
 }

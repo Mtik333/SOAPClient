@@ -66,6 +66,57 @@ public interface HelloWorld {
     /**
      * 
      * @return
+     *     returns java.util.List<com.mycompany.soapserv.RsiMovie>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getMovies", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetMovies")
+    @ResponseWrapper(localName = "getMoviesResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetMoviesResponse")
+    @Action(input = "http://soapserv.mycompany.com/HelloWorld/getMoviesRequest", output = "http://soapserv.mycompany.com/HelloWorld/getMoviesResponse")
+    public List<RsiMovie> getMovies();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns byte[]
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "downloadImage", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.DownloadImage")
+    @ResponseWrapper(localName = "downloadImageResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.DownloadImageResponse")
+    @Action(input = "http://soapserv.mycompany.com/HelloWorld/downloadImageRequest", output = "http://soapserv.mycompany.com/HelloWorld/downloadImageResponse")
+    public byte[] downloadImage(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<com.mycompany.soapserv.RsiClient>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getClients", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetClients")
+    @ResponseWrapper(localName = "getClientsResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetClientsResponse")
+    @Action(input = "http://soapserv.mycompany.com/HelloWorld/getClientsRequest", output = "http://soapserv.mycompany.com/HelloWorld/getClientsResponse")
+    public List<RsiClient> getClients();
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<com.mycompany.soapserv.RsiScreening>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getScreenings", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetScreenings")
+    @ResponseWrapper(localName = "getScreeningsResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetScreeningsResponse")
+    @Action(input = "http://soapserv.mycompany.com/HelloWorld/getScreeningsRequest", output = "http://soapserv.mycompany.com/HelloWorld/getScreeningsResponse")
+    public List<RsiScreening> getScreenings();
+
+    /**
+     * 
+     * @return
      *     returns java.util.List<com.mycompany.soapserv.Product>
      */
     @WebMethod
@@ -90,18 +141,6 @@ public interface HelloWorld {
     /**
      * 
      * @return
-     *     returns java.util.List<com.mycompany.soapserv.RsiClient>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getClients", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetClients")
-    @ResponseWrapper(localName = "getClientsResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetClientsResponse")
-    @Action(input = "http://soapserv.mycompany.com/HelloWorld/getClientsRequest", output = "http://soapserv.mycompany.com/HelloWorld/getClientsResponse")
-    public List<RsiClient> getClients();
-
-    /**
-     * 
-     * @return
      *     returns java.util.List<com.mycompany.soapserv.RsiSeat>
      */
     @WebMethod
@@ -110,18 +149,6 @@ public interface HelloWorld {
     @ResponseWrapper(localName = "getSeatsResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetSeatsResponse")
     @Action(input = "http://soapserv.mycompany.com/HelloWorld/getSeatsRequest", output = "http://soapserv.mycompany.com/HelloWorld/getSeatsResponse")
     public List<RsiSeat> getSeats();
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<com.mycompany.soapserv.RsiMovie>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getMovies", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetMovies")
-    @ResponseWrapper(localName = "getMoviesResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetMoviesResponse")
-    @Action(input = "http://soapserv.mycompany.com/HelloWorld/getMoviesRequest", output = "http://soapserv.mycompany.com/HelloWorld/getMoviesResponse")
-    public List<RsiMovie> getMovies();
 
     /**
      * 
@@ -138,18 +165,6 @@ public interface HelloWorld {
     /**
      * 
      * @return
-     *     returns java.util.List<com.mycompany.soapserv.RsiScreening>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getScreenings", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetScreenings")
-    @ResponseWrapper(localName = "getScreeningsResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetScreeningsResponse")
-    @Action(input = "http://soapserv.mycompany.com/HelloWorld/getScreeningsRequest", output = "http://soapserv.mycompany.com/HelloWorld/getScreeningsResponse")
-    public List<RsiScreening> getScreenings();
-
-    /**
-     * 
-     * @return
      *     returns java.util.List<com.mycompany.soapserv.RsiReservation>
      */
     @WebMethod
@@ -162,16 +177,13 @@ public interface HelloWorld {
     /**
      * 
      * @param arg0
-     * @return
-     *     returns byte[]
      */
     @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "downloadImage", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.DownloadImage")
-    @ResponseWrapper(localName = "downloadImageResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.DownloadImageResponse")
-    @Action(input = "http://soapserv.mycompany.com/HelloWorld/downloadImageRequest", output = "http://soapserv.mycompany.com/HelloWorld/downloadImageResponse")
-    public byte[] downloadImage(
+    @RequestWrapper(localName = "createReservation", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.CreateReservation")
+    @ResponseWrapper(localName = "createReservationResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.CreateReservationResponse")
+    @Action(input = "http://soapserv.mycompany.com/HelloWorld/createReservationRequest", output = "http://soapserv.mycompany.com/HelloWorld/createReservationResponse")
+    public void createReservation(
         @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
+        RsiReservation arg0);
 
 }
