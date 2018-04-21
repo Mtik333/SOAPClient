@@ -105,9 +105,10 @@ public class MovieDetailsController implements Initializable {
         QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
         Service service = Service.create(url, qname);
         HelloWorld hello = service.getPort(HelloWorld.class);
-//        Image image = new Image(new ByteArrayInputStream(hello.downloadImage("rss.png")));
-//        if (image!=null)
-//            imageView.setImage(image);
+        byte[] bytes = hello.downloadImage("project.png");
+        ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+        Image image = new Image(bais);
+        imageView.setImage(image);
         titleTextField.setText(movie.getTitle());
         directorTextField.setText(movie.getDirector());
         actorsTextField.setText(movie.getActors());

@@ -8,17 +8,10 @@
    <children>
        <MenuBar prefHeight="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
           <menus>
-              <Menu mnemonicParsing="false" text="File">
+              <Menu mnemonicParsing="false" text="My">
                  <items>
-                     <MenuItem mnemonicParsing="false" text="Load dataset from file" />
-                     <MenuItem mnemonicParsing="false" text="Load sample dataset" />
-                     <MenuItem mnemonicParsing="false" text="Set separator" />
+                     <MenuItem mnemonicParsing="false" onAction="#goToMyReservations" text="Show my reservations" />
                      <MenuItem fx:id="closeButton" mnemonicParsing="false" text="Exit" />
-                 </items>
-              </Menu>
-              <Menu mnemonicParsing="false" text="Options">
-                 <items>
-                     <MenuItem mnemonicParsing="false" text="Algorithm settings" />
                  </items>
               </Menu>
           </menus>

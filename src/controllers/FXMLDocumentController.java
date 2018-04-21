@@ -115,4 +115,19 @@ public class FXMLDocumentController implements Initializable {
     private static RsiMovie findMovie(String name){
         return movies.stream().filter(myname -> myname.getTitle().equals(name)).findFirst().get();
     }
+
+    @FXML
+    private void goToMyReservations(){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxmls/MyReservations.fxml"));
+        Parent root1 = null;
+        try {
+            root1 = (Parent) fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setTitle("My reservations");
+        stage.setScene(new Scene(root1));
+        stage.showAndWait();
+    }
 }

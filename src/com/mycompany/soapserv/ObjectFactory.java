@@ -27,7 +27,6 @@ public class ObjectFactory {
     private final static QName _DownloadImage_QNAME = new QName("http://soapserv.mycompany.com/", "downloadImage");
     private final static QName _RsiReservation_QNAME = new QName("http://soapserv.mycompany.com/", "rsiReservation");
     private final static QName _RsiSeat_QNAME = new QName("http://soapserv.mycompany.com/", "rsiSeat");
-    private final static QName _GetProducts_QNAME = new QName("http://soapserv.mycompany.com/", "getProducts");
     private final static QName _GetScreenings_QNAME = new QName("http://soapserv.mycompany.com/", "getScreenings");
     private final static QName _GetReservations_QNAME = new QName("http://soapserv.mycompany.com/", "getReservations");
     private final static QName _RsiMovie_QNAME = new QName("http://soapserv.mycompany.com/", "rsiMovie");
@@ -39,23 +38,25 @@ public class ObjectFactory {
     private final static QName _GetReservedSeats_QNAME = new QName("http://soapserv.mycompany.com/", "getReservedSeats");
     private final static QName _RsiScreening_QNAME = new QName("http://soapserv.mycompany.com/", "rsiScreening");
     private final static QName _GetClientsResponse_QNAME = new QName("http://soapserv.mycompany.com/", "getClientsResponse");
-    private final static QName _GetHelloWorldAsStringResponse_QNAME = new QName("http://soapserv.mycompany.com/", "getHelloWorldAsStringResponse");
+    private final static QName _RemoveReservationResponse_QNAME = new QName("http://soapserv.mycompany.com/", "removeReservationResponse");
     private final static QName _GetClients_QNAME = new QName("http://soapserv.mycompany.com/", "getClients");
-    private final static QName _GetProductsResponse_QNAME = new QName("http://soapserv.mycompany.com/", "getProductsResponse");
+    private final static QName _PdfReservation_QNAME = new QName("http://soapserv.mycompany.com/", "pdfReservation");
     private final static QName _CreateReservation_QNAME = new QName("http://soapserv.mycompany.com/", "createReservation");
     private final static QName _GetAuditoriums_QNAME = new QName("http://soapserv.mycompany.com/", "getAuditoriums");
-    private final static QName _GetHelloWorldAsString_QNAME = new QName("http://soapserv.mycompany.com/", "getHelloWorldAsString");
     private final static QName _RsiSeatReserved_QNAME = new QName("http://soapserv.mycompany.com/", "rsiSeatReserved");
     private final static QName _GetAuditoriumsResponse_QNAME = new QName("http://soapserv.mycompany.com/", "getAuditoriumsResponse");
     private final static QName _GetReservationsResponse_QNAME = new QName("http://soapserv.mycompany.com/", "getReservationsResponse");
     private final static QName _GetSeats_QNAME = new QName("http://soapserv.mycompany.com/", "getSeats");
+    private final static QName _PdfReservationResponse_QNAME = new QName("http://soapserv.mycompany.com/", "pdfReservationResponse");
     private final static QName _RsiClient_QNAME = new QName("http://soapserv.mycompany.com/", "rsiClient");
     private final static QName _GetScreeningsResponse_QNAME = new QName("http://soapserv.mycompany.com/", "getScreeningsResponse");
     private final static QName _GetReservedSeatsResponse_QNAME = new QName("http://soapserv.mycompany.com/", "getReservedSeatsResponse");
     private final static QName _RsiAuditorium_QNAME = new QName("http://soapserv.mycompany.com/", "rsiAuditorium");
+    private final static QName _RemoveReservation_QNAME = new QName("http://soapserv.mycompany.com/", "removeReservation");
     private final static QName _AuthenticateClient_QNAME = new QName("http://soapserv.mycompany.com/", "authenticateClient");
     private final static QName _GetSeatsResponse_QNAME = new QName("http://soapserv.mycompany.com/", "getSeatsResponse");
     private final static QName _CreateReservationResponse_QNAME = new QName("http://soapserv.mycompany.com/", "createReservationResponse");
+    private final static QName _PdfReservationResponseReturn_QNAME = new QName("", "return");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.mycompany.soapserv
@@ -70,14 +71,6 @@ public class ObjectFactory {
      */
     public GetAuditoriums createGetAuditoriums() {
         return new GetAuditoriums();
-    }
-
-    /**
-     * Create an instance of {@link GetHelloWorldAsString }
-     * 
-     */
-    public GetHelloWorldAsString createGetHelloWorldAsString() {
-        return new GetHelloWorldAsString();
     }
 
     /**
@@ -97,6 +90,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PdfReservation }
+     * 
+     */
+    public PdfReservation createPdfReservation() {
+        return new PdfReservation();
+    }
+
+    /**
      * Create an instance of {@link GetClients }
      * 
      */
@@ -105,19 +106,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetProductsResponse }
+     * Create an instance of {@link RemoveReservationResponse }
      * 
      */
-    public GetProductsResponse createGetProductsResponse() {
-        return new GetProductsResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetHelloWorldAsStringResponse }
-     * 
-     */
-    public GetHelloWorldAsStringResponse createGetHelloWorldAsStringResponse() {
-        return new GetHelloWorldAsStringResponse();
+    public RemoveReservationResponse createRemoveReservationResponse() {
+        return new RemoveReservationResponse();
     }
 
     /**
@@ -209,14 +202,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetProducts }
-     * 
-     */
-    public GetProducts createGetProducts() {
-        return new GetProducts();
-    }
-
-    /**
      * Create an instance of {@link DownloadImage }
      * 
      */
@@ -265,6 +250,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RemoveReservation }
+     * 
+     */
+    public RemoveReservation createRemoveReservation() {
+        return new RemoveReservation();
+    }
+
+    /**
      * Create an instance of {@link RsiAuditorium }
      * 
      */
@@ -297,6 +290,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PdfReservationResponse }
+     * 
+     */
+    public PdfReservationResponse createPdfReservationResponse() {
+        return new PdfReservationResponse();
+    }
+
+    /**
      * Create an instance of {@link GetReservationsResponse }
      * 
      */
@@ -318,14 +319,6 @@ public class ObjectFactory {
      */
     public GetAuditoriumsResponse createGetAuditoriumsResponse() {
         return new GetAuditoriumsResponse();
-    }
-
-    /**
-     * Create an instance of {@link Product }
-     * 
-     */
-    public Product createProduct() {
-        return new Product();
     }
 
     /**
@@ -353,15 +346,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "rsiSeat")
     public JAXBElement<RsiSeat> createRsiSeat(RsiSeat value) {
         return new JAXBElement<RsiSeat>(_RsiSeat_QNAME, RsiSeat.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetProducts }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getProducts")
-    public JAXBElement<GetProducts> createGetProducts(GetProducts value) {
-        return new JAXBElement<GetProducts>(_GetProducts_QNAME, GetProducts.class, null, value);
     }
 
     /**
@@ -464,12 +448,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetHelloWorldAsStringResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveReservationResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getHelloWorldAsStringResponse")
-    public JAXBElement<GetHelloWorldAsStringResponse> createGetHelloWorldAsStringResponse(GetHelloWorldAsStringResponse value) {
-        return new JAXBElement<GetHelloWorldAsStringResponse>(_GetHelloWorldAsStringResponse_QNAME, GetHelloWorldAsStringResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "removeReservationResponse")
+    public JAXBElement<RemoveReservationResponse> createRemoveReservationResponse(RemoveReservationResponse value) {
+        return new JAXBElement<RemoveReservationResponse>(_RemoveReservationResponse_QNAME, RemoveReservationResponse.class, null, value);
     }
 
     /**
@@ -482,12 +466,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetProductsResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link PdfReservation }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getProductsResponse")
-    public JAXBElement<GetProductsResponse> createGetProductsResponse(GetProductsResponse value) {
-        return new JAXBElement<GetProductsResponse>(_GetProductsResponse_QNAME, GetProductsResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "pdfReservation")
+    public JAXBElement<PdfReservation> createPdfReservation(PdfReservation value) {
+        return new JAXBElement<PdfReservation>(_PdfReservation_QNAME, PdfReservation.class, null, value);
     }
 
     /**
@@ -506,15 +490,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getAuditoriums")
     public JAXBElement<GetAuditoriums> createGetAuditoriums(GetAuditoriums value) {
         return new JAXBElement<GetAuditoriums>(_GetAuditoriums_QNAME, GetAuditoriums.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetHelloWorldAsString }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getHelloWorldAsString")
-    public JAXBElement<GetHelloWorldAsString> createGetHelloWorldAsString(GetHelloWorldAsString value) {
-        return new JAXBElement<GetHelloWorldAsString>(_GetHelloWorldAsString_QNAME, GetHelloWorldAsString.class, null, value);
     }
 
     /**
@@ -554,6 +529,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PdfReservationResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "pdfReservationResponse")
+    public JAXBElement<PdfReservationResponse> createPdfReservationResponse(PdfReservationResponse value) {
+        return new JAXBElement<PdfReservationResponse>(_PdfReservationResponse_QNAME, PdfReservationResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RsiClient }{@code >}}
      * 
      */
@@ -590,6 +574,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemoveReservation }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "removeReservation")
+    public JAXBElement<RemoveReservation> createRemoveReservation(RemoveReservation value) {
+        return new JAXBElement<RemoveReservation>(_RemoveReservation_QNAME, RemoveReservation.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AuthenticateClient }{@code >}}
      * 
      */
@@ -614,6 +607,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "createReservationResponse")
     public JAXBElement<CreateReservationResponse> createCreateReservationResponse(CreateReservationResponse value) {
         return new JAXBElement<CreateReservationResponse>(_CreateReservationResponse_QNAME, CreateReservationResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link byte[]}{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "", name = "return", scope = PdfReservationResponse.class)
+    public JAXBElement<byte[]> createPdfReservationResponseReturn(byte[] value) {
+        return new JAXBElement<byte[]>(_PdfReservationResponseReturn_QNAME, byte[].class, PdfReservationResponse.class, ((byte[]) value));
     }
 
 }
