@@ -1,4 +1,3 @@
-
 package com.mycompany.soapserv;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for createReservation complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="createReservation">
  *   &lt;complexContent>
@@ -23,13 +22,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "createReservation", propOrder = {
-    "arg0",
-    "arg1"
+        "arg0",
+        "arg1"
 })
 public class CreateReservation {
 
@@ -38,11 +35,9 @@ public class CreateReservation {
 
     /**
      * Gets the value of the arg0 property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RsiReservation }
-     *     
+     *
+     * @return possible object is
+     * {@link RsiReservation }
      */
     public RsiReservation getArg0() {
         return arg0;
@@ -50,11 +45,9 @@ public class CreateReservation {
 
     /**
      * Sets the value of the arg0 property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RsiReservation }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link RsiReservation }
      */
     public void setArg0(RsiReservation value) {
         this.arg0 = value;
@@ -62,11 +55,9 @@ public class CreateReservation {
 
     /**
      * Gets the value of the arg1 property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RsiSeat }
-     *     
+     *
+     * @return possible object is
+     * {@link RsiSeat }
      */
     public RsiSeat getArg1() {
         return arg1;
@@ -74,11 +65,9 @@ public class CreateReservation {
 
     /**
      * Sets the value of the arg1 property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RsiSeat }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link RsiSeat }
      */
     public void setArg1(RsiSeat value) {
         this.arg1 = value;

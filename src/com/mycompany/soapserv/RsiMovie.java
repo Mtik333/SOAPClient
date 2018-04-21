@@ -1,4 +1,3 @@
-
 package com.mycompany.soapserv;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for rsiMovie complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="rsiMovie">
  *   &lt;complexContent>
@@ -27,17 +26,15 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "rsiMovie", propOrder = {
-    "actors",
-    "description",
-    "director",
-    "duration",
-    "id",
-    "title"
+        "actors",
+        "description",
+        "director",
+        "duration",
+        "id",
+        "title"
 })
 public class RsiMovie {
 
@@ -50,11 +47,9 @@ public class RsiMovie {
 
     /**
      * Gets the value of the actors property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getActors() {
         return actors;
@@ -62,11 +57,9 @@ public class RsiMovie {
 
     /**
      * Sets the value of the actors property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setActors(String value) {
         this.actors = value;
@@ -74,11 +67,9 @@ public class RsiMovie {
 
     /**
      * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDescription() {
         return description;
@@ -86,11 +77,9 @@ public class RsiMovie {
 
     /**
      * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDescription(String value) {
         this.description = value;
@@ -98,11 +87,9 @@ public class RsiMovie {
 
     /**
      * Gets the value of the director property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDirector() {
         return director;
@@ -110,11 +97,9 @@ public class RsiMovie {
 
     /**
      * Sets the value of the director property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDirector(String value) {
         this.director = value;
@@ -122,11 +107,9 @@ public class RsiMovie {
 
     /**
      * Gets the value of the duration property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     *
+     * @return possible object is
+     * {@link Integer }
      */
     public Integer getDuration() {
         return duration;
@@ -134,11 +117,9 @@ public class RsiMovie {
 
     /**
      * Sets the value of the duration property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Integer }
      */
     public void setDuration(Integer value) {
         this.duration = value;
@@ -146,11 +127,9 @@ public class RsiMovie {
 
     /**
      * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     *
+     * @return possible object is
+     * {@link Integer }
      */
     public Integer getId() {
         return id;
@@ -158,11 +137,9 @@ public class RsiMovie {
 
     /**
      * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Integer }
      */
     public void setId(Integer value) {
         this.id = value;
@@ -170,11 +147,9 @@ public class RsiMovie {
 
     /**
      * Gets the value of the title property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getTitle() {
         return title;
@@ -182,11 +157,9 @@ public class RsiMovie {
 
     /**
      * Sets the value of the title property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setTitle(String value) {
         this.title = value;

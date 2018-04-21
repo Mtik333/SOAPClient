@@ -1,4 +1,3 @@
-
 package com.mycompany.soapserv;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for InvalidPasswordException complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="InvalidPasswordException">
  *   &lt;complexContent>
@@ -23,13 +22,11 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "InvalidPasswordException", propOrder = {
-    "exceptionInfo",
-    "message"
+        "exceptionInfo",
+        "message"
 })
 public class InvalidPasswordException {
 
@@ -38,11 +35,9 @@ public class InvalidPasswordException {
 
     /**
      * Gets the value of the exceptionInfo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getExceptionInfo() {
         return exceptionInfo;
@@ -50,11 +45,9 @@ public class InvalidPasswordException {
 
     /**
      * Sets the value of the exceptionInfo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setExceptionInfo(String value) {
         this.exceptionInfo = value;
@@ -62,11 +55,9 @@ public class InvalidPasswordException {
 
     /**
      * Gets the value of the message property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getMessage() {
         return message;
@@ -74,11 +65,9 @@ public class InvalidPasswordException {
 
     /**
      * Sets the value of the message property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setMessage(String value) {
         this.message = value;

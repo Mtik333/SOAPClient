@@ -1,4 +1,3 @@
-
 package com.mycompany.soapserv;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for rsiAuditorium complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="rsiAuditorium">
  *   &lt;complexContent>
@@ -24,14 +23,12 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "rsiAuditorium", propOrder = {
-    "id",
-    "name",
-    "seatsNumber"
+        "id",
+        "name",
+        "seatsNumber"
 })
 public class RsiAuditorium {
 
@@ -41,11 +38,9 @@ public class RsiAuditorium {
 
     /**
      * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     *
+     * @return possible object is
+     * {@link Integer }
      */
     public Integer getId() {
         return id;
@@ -53,11 +48,9 @@ public class RsiAuditorium {
 
     /**
      * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Integer }
      */
     public void setId(Integer value) {
         this.id = value;
@@ -65,11 +58,9 @@ public class RsiAuditorium {
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getName() {
         return name;
@@ -77,11 +68,9 @@ public class RsiAuditorium {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -89,7 +78,6 @@ public class RsiAuditorium {
 
     /**
      * Gets the value of the seatsNumber property.
-     * 
      */
     public int getSeatsNumber() {
         return seatsNumber;
@@ -97,7 +85,6 @@ public class RsiAuditorium {
 
     /**
      * Sets the value of the seatsNumber property.
-     * 
      */
     public void setSeatsNumber(int value) {
         this.seatsNumber = value;

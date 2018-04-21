@@ -1,4 +1,3 @@
-
 package com.mycompany.soapserv;
 
 import javax.xml.bind.JAXBElement;
@@ -8,18 +7,17 @@ import javax.xml.namespace.QName;
 
 
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the com.mycompany.soapserv package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
+ * This object contains factory methods for each
+ * Java content interface and Java element interface
+ * generated in the com.mycompany.soapserv package.
+ * <p>An ObjectFactory allows you to programatically
+ * construct new instances of the Java representation
+ * for XML content. The Java representation of XML
+ * content can consist of schema derived interfaces
+ * and classes representing the binding of schema
+ * type definitions, element declarations and model
+ * groups.  Factory methods for each of these are
  * provided in this class.
- * 
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -34,6 +32,7 @@ public class ObjectFactory {
     private final static QName _AuthenticateClientResponse_QNAME = new QName("http://soapserv.mycompany.com/", "authenticateClientResponse");
     private final static QName _DownloadImageResponse_QNAME = new QName("http://soapserv.mycompany.com/", "downloadImageResponse");
     private final static QName _GetMoviesResponse_QNAME = new QName("http://soapserv.mycompany.com/", "getMoviesResponse");
+    private final static QName _ChangeReservation_QNAME = new QName("http://soapserv.mycompany.com/", "changeReservation");
     private final static QName _GetMovies_QNAME = new QName("http://soapserv.mycompany.com/", "getMovies");
     private final static QName _GetReservedSeats_QNAME = new QName("http://soapserv.mycompany.com/", "getReservedSeats");
     private final static QName _RsiScreening_QNAME = new QName("http://soapserv.mycompany.com/", "rsiScreening");
@@ -45,6 +44,7 @@ public class ObjectFactory {
     private final static QName _GetAuditoriums_QNAME = new QName("http://soapserv.mycompany.com/", "getAuditoriums");
     private final static QName _RsiSeatReserved_QNAME = new QName("http://soapserv.mycompany.com/", "rsiSeatReserved");
     private final static QName _GetAuditoriumsResponse_QNAME = new QName("http://soapserv.mycompany.com/", "getAuditoriumsResponse");
+    private final static QName _ChangeReservationResponse_QNAME = new QName("http://soapserv.mycompany.com/", "changeReservationResponse");
     private final static QName _GetReservationsResponse_QNAME = new QName("http://soapserv.mycompany.com/", "getReservationsResponse");
     private final static QName _GetSeats_QNAME = new QName("http://soapserv.mycompany.com/", "getSeats");
     private final static QName _PdfReservationResponse_QNAME = new QName("http://soapserv.mycompany.com/", "pdfReservationResponse");
@@ -60,14 +60,12 @@ public class ObjectFactory {
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.mycompany.soapserv
-     * 
      */
     public ObjectFactory() {
     }
 
     /**
      * Create an instance of {@link GetAuditoriums }
-     * 
      */
     public GetAuditoriums createGetAuditoriums() {
         return new GetAuditoriums();
@@ -75,7 +73,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link RsiSeatReserved }
-     * 
      */
     public RsiSeatReserved createRsiSeatReserved() {
         return new RsiSeatReserved();
@@ -83,7 +80,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link CreateReservation }
-     * 
      */
     public CreateReservation createCreateReservation() {
         return new CreateReservation();
@@ -91,7 +87,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link PdfReservation }
-     * 
      */
     public PdfReservation createPdfReservation() {
         return new PdfReservation();
@@ -99,7 +94,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetClients }
-     * 
      */
     public GetClients createGetClients() {
         return new GetClients();
@@ -107,7 +101,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link RemoveReservationResponse }
-     * 
      */
     public RemoveReservationResponse createRemoveReservationResponse() {
         return new RemoveReservationResponse();
@@ -115,7 +108,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetClientsResponse }
-     * 
      */
     public GetClientsResponse createGetClientsResponse() {
         return new GetClientsResponse();
@@ -123,15 +115,20 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link RsiScreening }
-     * 
      */
     public RsiScreening createRsiScreening() {
         return new RsiScreening();
     }
 
     /**
+     * Create an instance of {@link ChangeReservation }
+     */
+    public ChangeReservation createChangeReservation() {
+        return new ChangeReservation();
+    }
+
+    /**
      * Create an instance of {@link GetMovies }
-     * 
      */
     public GetMovies createGetMovies() {
         return new GetMovies();
@@ -139,7 +136,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetReservedSeats }
-     * 
      */
     public GetReservedSeats createGetReservedSeats() {
         return new GetReservedSeats();
@@ -147,7 +143,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetMoviesResponse }
-     * 
      */
     public GetMoviesResponse createGetMoviesResponse() {
         return new GetMoviesResponse();
@@ -155,7 +150,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link AuthenticateClientResponse }
-     * 
      */
     public AuthenticateClientResponse createAuthenticateClientResponse() {
         return new AuthenticateClientResponse();
@@ -163,7 +157,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DownloadImageResponse }
-     * 
      */
     public DownloadImageResponse createDownloadImageResponse() {
         return new DownloadImageResponse();
@@ -171,7 +164,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetReservations }
-     * 
      */
     public GetReservations createGetReservations() {
         return new GetReservations();
@@ -179,7 +171,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link RsiMovie }
-     * 
      */
     public RsiMovie createRsiMovie() {
         return new RsiMovie();
@@ -187,7 +178,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link InvalidPasswordException }
-     * 
      */
     public InvalidPasswordException createInvalidPasswordException() {
         return new InvalidPasswordException();
@@ -195,7 +185,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetScreenings }
-     * 
      */
     public GetScreenings createGetScreenings() {
         return new GetScreenings();
@@ -203,7 +192,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DownloadImage }
-     * 
      */
     public DownloadImage createDownloadImage() {
         return new DownloadImage();
@@ -211,7 +199,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link RsiReservation }
-     * 
      */
     public RsiReservation createRsiReservation() {
         return new RsiReservation();
@@ -219,7 +206,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link RsiSeat }
-     * 
      */
     public RsiSeat createRsiSeat() {
         return new RsiSeat();
@@ -227,7 +213,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link CreateReservationResponse }
-     * 
      */
     public CreateReservationResponse createCreateReservationResponse() {
         return new CreateReservationResponse();
@@ -235,7 +220,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link AuthenticateClient }
-     * 
      */
     public AuthenticateClient createAuthenticateClient() {
         return new AuthenticateClient();
@@ -243,7 +227,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetSeatsResponse }
-     * 
      */
     public GetSeatsResponse createGetSeatsResponse() {
         return new GetSeatsResponse();
@@ -251,7 +234,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link RemoveReservation }
-     * 
      */
     public RemoveReservation createRemoveReservation() {
         return new RemoveReservation();
@@ -259,7 +241,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link RsiAuditorium }
-     * 
      */
     public RsiAuditorium createRsiAuditorium() {
         return new RsiAuditorium();
@@ -267,7 +248,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetReservedSeatsResponse }
-     * 
      */
     public GetReservedSeatsResponse createGetReservedSeatsResponse() {
         return new GetReservedSeatsResponse();
@@ -275,7 +255,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetScreeningsResponse }
-     * 
      */
     public GetScreeningsResponse createGetScreeningsResponse() {
         return new GetScreeningsResponse();
@@ -283,7 +262,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link RsiClient }
-     * 
      */
     public RsiClient createRsiClient() {
         return new RsiClient();
@@ -291,15 +269,20 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link PdfReservationResponse }
-     * 
      */
     public PdfReservationResponse createPdfReservationResponse() {
         return new PdfReservationResponse();
     }
 
     /**
+     * Create an instance of {@link ChangeReservationResponse }
+     */
+    public ChangeReservationResponse createChangeReservationResponse() {
+        return new ChangeReservationResponse();
+    }
+
+    /**
      * Create an instance of {@link GetReservationsResponse }
-     * 
      */
     public GetReservationsResponse createGetReservationsResponse() {
         return new GetReservationsResponse();
@@ -307,7 +290,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetSeats }
-     * 
      */
     public GetSeats createGetSeats() {
         return new GetSeats();
@@ -315,7 +297,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetAuditoriumsResponse }
-     * 
      */
     public GetAuditoriumsResponse createGetAuditoriumsResponse() {
         return new GetAuditoriumsResponse();
@@ -323,7 +304,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DownloadImage }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "downloadImage")
     public JAXBElement<DownloadImage> createDownloadImage(DownloadImage value) {
@@ -332,7 +312,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RsiReservation }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "rsiReservation")
     public JAXBElement<RsiReservation> createRsiReservation(RsiReservation value) {
@@ -341,7 +320,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RsiSeat }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "rsiSeat")
     public JAXBElement<RsiSeat> createRsiSeat(RsiSeat value) {
@@ -350,7 +328,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetScreenings }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getScreenings")
     public JAXBElement<GetScreenings> createGetScreenings(GetScreenings value) {
@@ -359,7 +336,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetReservations }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getReservations")
     public JAXBElement<GetReservations> createGetReservations(GetReservations value) {
@@ -368,7 +344,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RsiMovie }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "rsiMovie")
     public JAXBElement<RsiMovie> createRsiMovie(RsiMovie value) {
@@ -377,7 +352,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link InvalidPasswordException }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "InvalidPasswordException")
     public JAXBElement<InvalidPasswordException> createInvalidPasswordException(InvalidPasswordException value) {
@@ -386,7 +360,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AuthenticateClientResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "authenticateClientResponse")
     public JAXBElement<AuthenticateClientResponse> createAuthenticateClientResponse(AuthenticateClientResponse value) {
@@ -395,7 +368,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DownloadImageResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "downloadImageResponse")
     public JAXBElement<DownloadImageResponse> createDownloadImageResponse(DownloadImageResponse value) {
@@ -404,7 +376,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetMoviesResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getMoviesResponse")
     public JAXBElement<GetMoviesResponse> createGetMoviesResponse(GetMoviesResponse value) {
@@ -412,8 +383,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ChangeReservation }{@code >}}
+     */
+    @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "changeReservation")
+    public JAXBElement<ChangeReservation> createChangeReservation(ChangeReservation value) {
+        return new JAXBElement<ChangeReservation>(_ChangeReservation_QNAME, ChangeReservation.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetMovies }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getMovies")
     public JAXBElement<GetMovies> createGetMovies(GetMovies value) {
@@ -422,7 +400,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetReservedSeats }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getReservedSeats")
     public JAXBElement<GetReservedSeats> createGetReservedSeats(GetReservedSeats value) {
@@ -431,7 +408,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RsiScreening }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "rsiScreening")
     public JAXBElement<RsiScreening> createRsiScreening(RsiScreening value) {
@@ -440,7 +416,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetClientsResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getClientsResponse")
     public JAXBElement<GetClientsResponse> createGetClientsResponse(GetClientsResponse value) {
@@ -449,7 +424,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RemoveReservationResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "removeReservationResponse")
     public JAXBElement<RemoveReservationResponse> createRemoveReservationResponse(RemoveReservationResponse value) {
@@ -458,7 +432,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetClients }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getClients")
     public JAXBElement<GetClients> createGetClients(GetClients value) {
@@ -467,7 +440,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link PdfReservation }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "pdfReservation")
     public JAXBElement<PdfReservation> createPdfReservation(PdfReservation value) {
@@ -476,7 +448,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CreateReservation }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "createReservation")
     public JAXBElement<CreateReservation> createCreateReservation(CreateReservation value) {
@@ -485,7 +456,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetAuditoriums }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getAuditoriums")
     public JAXBElement<GetAuditoriums> createGetAuditoriums(GetAuditoriums value) {
@@ -494,7 +464,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RsiSeatReserved }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "rsiSeatReserved")
     public JAXBElement<RsiSeatReserved> createRsiSeatReserved(RsiSeatReserved value) {
@@ -503,7 +472,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetAuditoriumsResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getAuditoriumsResponse")
     public JAXBElement<GetAuditoriumsResponse> createGetAuditoriumsResponse(GetAuditoriumsResponse value) {
@@ -511,8 +479,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ChangeReservationResponse }{@code >}}
+     */
+    @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "changeReservationResponse")
+    public JAXBElement<ChangeReservationResponse> createChangeReservationResponse(ChangeReservationResponse value) {
+        return new JAXBElement<ChangeReservationResponse>(_ChangeReservationResponse_QNAME, ChangeReservationResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetReservationsResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getReservationsResponse")
     public JAXBElement<GetReservationsResponse> createGetReservationsResponse(GetReservationsResponse value) {
@@ -521,7 +496,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetSeats }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getSeats")
     public JAXBElement<GetSeats> createGetSeats(GetSeats value) {
@@ -530,7 +504,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link PdfReservationResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "pdfReservationResponse")
     public JAXBElement<PdfReservationResponse> createPdfReservationResponse(PdfReservationResponse value) {
@@ -539,7 +512,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RsiClient }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "rsiClient")
     public JAXBElement<RsiClient> createRsiClient(RsiClient value) {
@@ -548,7 +520,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetScreeningsResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getScreeningsResponse")
     public JAXBElement<GetScreeningsResponse> createGetScreeningsResponse(GetScreeningsResponse value) {
@@ -557,7 +528,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetReservedSeatsResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getReservedSeatsResponse")
     public JAXBElement<GetReservedSeatsResponse> createGetReservedSeatsResponse(GetReservedSeatsResponse value) {
@@ -566,7 +536,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RsiAuditorium }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "rsiAuditorium")
     public JAXBElement<RsiAuditorium> createRsiAuditorium(RsiAuditorium value) {
@@ -575,7 +544,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RemoveReservation }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "removeReservation")
     public JAXBElement<RemoveReservation> createRemoveReservation(RemoveReservation value) {
@@ -584,7 +552,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AuthenticateClient }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "authenticateClient")
     public JAXBElement<AuthenticateClient> createAuthenticateClient(AuthenticateClient value) {
@@ -593,7 +560,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetSeatsResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "getSeatsResponse")
     public JAXBElement<GetSeatsResponse> createGetSeatsResponse(GetSeatsResponse value) {
@@ -602,7 +568,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CreateReservationResponse }{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "http://soapserv.mycompany.com/", name = "createReservationResponse")
     public JAXBElement<CreateReservationResponse> createCreateReservationResponse(CreateReservationResponse value) {
@@ -611,7 +576,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link byte[]}{@code >}}
-     * 
      */
     @XmlElementDecl(namespace = "", name = "return", scope = PdfReservationResponse.class)
     public JAXBElement<byte[]> createPdfReservationResponseReturn(byte[] value) {

@@ -2,7 +2,6 @@ package controllers;
 
 import com.mycompany.soapserv.HelloWorld;
 import com.mycompany.soapserv.RsiMovie;
-import com.mycompany.soapserv.RsiScreening;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,62 +28,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class FXMLDocumentController implements Initializable {
 
+    static List<RsiMovie> movies = new ArrayList<>();
     @FXML
     private ListView listView;
-    static List<RsiMovie> movies = new ArrayList<>();
 
-    static class XCell extends ListCell<String> {
-        HBox hbox = new HBox();
-        Label label = new Label("(empty)");
-        Pane pane = new Pane();
-        Button button = new Button("Details");
-        String lastItem;
-
-        public XCell() {
-            super();
-            hbox.getChildren().addAll(label, pane, button);
-            HBox.setHgrow(pane, Priority.ALWAYS);
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxmls/MovieDetails.fxml"));
-                    MovieDetailsController.movie=FXMLDocumentController.findMovie(lastItem);
-                    Parent root1 = null;
-                    try {
-                        root1 = (Parent) fxmlLoader.load();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Stage stage = new Stage();
-                    stage.setTitle("Movie details");
-                    stage.setScene(new Scene(root1));
-//                    MovieDetailsController controller =
-//                            fxmlLoader.<MovieDetailsController>getController();
-//                    controller.setMovie(FXMLDocumentController.findMovie(lastItem));
-                    stage.showAndWait();
-                }
-            });
-        }
-
-        @Override
-        protected void updateItem(String item, boolean empty) {
-            super.updateItem(item, empty);
-            setText(null);  // No text in label of super class
-            if (empty) {
-                lastItem = null;
-                setGraphic(null);
-            } else {
-                lastItem = item;
-                label.setText(item!=null ? item : "<null>");
-                setGraphic(hbox);
-            }
-        }
+    private static RsiMovie findMovie(String name) {
+        return movies.stream().filter(myname -> myname.getTitle().equals(name)).findFirst().get();
     }
 
     @Override
@@ -112,12 +66,8 @@ public class FXMLDocumentController implements Initializable {
         });
     }
 
-    private static RsiMovie findMovie(String name){
-        return movies.stream().filter(myname -> myname.getTitle().equals(name)).findFirst().get();
-    }
-
     @FXML
-    private void goToMyReservations(){
+    private void goToMyReservations() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxmls/MyReservations.fxml"));
         Parent root1 = null;
         try {
@@ -129,5 +79,53 @@ public class FXMLDocumentController implements Initializable {
         stage.setTitle("My reservations");
         stage.setScene(new Scene(root1));
         stage.showAndWait();
+    }
+
+    static class XCell extends ListCell<String> {
+        HBox hbox = new HBox();
+        Label label = new Label("(empty)");
+        Pane pane = new Pane();
+        Button button = new Button("Details");
+        String lastItem;
+
+        public XCell() {
+            super();
+            hbox.getChildren().addAll(label, pane, button);
+            HBox.setHgrow(pane, Priority.ALWAYS);
+            button.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxmls/MovieDetails.fxml"));
+                    MovieDetailsController.movie = FXMLDocumentController.findMovie(lastItem);
+                    Parent root1 = null;
+                    try {
+                        root1 = (Parent) fxmlLoader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Stage stage = new Stage();
+                    stage.setTitle("Movie details");
+                    stage.setScene(new Scene(root1));
+//                    MovieDetailsController controller =
+//                            fxmlLoader.<MovieDetailsController>getController();
+//                    controller.setMovie(FXMLDocumentController.findMovie(lastItem));
+                    stage.showAndWait();
+                }
+            });
+        }
+
+        @Override
+        protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+            setText(null);  // No text in label of super class
+            if (empty) {
+                lastItem = null;
+                setGraphic(null);
+            } else {
+                lastItem = item;
+                label.setText(item != null ? item : "<null>");
+                setGraphic(hbox);
+            }
+        }
     }
 }

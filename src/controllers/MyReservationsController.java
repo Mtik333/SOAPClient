@@ -23,7 +23,9 @@ import javafx.util.Callback;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -34,10 +36,49 @@ import java.util.stream.Collectors;
 
 public class MyReservationsController implements Initializable {
 
+    static List<RsiReservation> reservationList;
     @FXML
     public ListView listView;
 
-    static List<RsiReservation> reservationList;
+    public static RsiReservation findReservation(String id) {
+        int reservationId = Integer.parseInt(id.replace("-", ""));
+        for (RsiReservation rsiReservation : reservationList) {
+            if (rsiReservation.getId().intValue() == reservationId) {
+                return rsiReservation;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        URL url = null;
+        try {
+            url = new URL("https://localhost:8443/SOAPServer/HelloWorldImplService?wsdl");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
+        Service service = Service.create(url, qname);
+        HelloWorld hello = service.getPort(HelloWorld.class);
+        reservationList = hello.getReservations().stream().filter(reservation -> reservation.getClientReserverId().getId().intValue() == Everything.rsiClient.getId().intValue()).collect(Collectors.toList());
+        List<String> reservations = new ArrayList<>();
+        for (RsiReservation rsiReservation : reservationList) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(rsiReservation.getId() + "\t");
+            sb.append(rsiReservation.getScreeningId().getMovieId().getTitle() + "\t");
+            sb.append(rsiReservation.getScreeningId().getScreeningStart());
+            reservations.add(sb.toString());
+        }
+        ObservableList<String> list = FXCollections.observableArrayList(reservations);
+        listView.setItems(list);
+        listView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+            @Override
+            public ListCell<String> call(ListView<String> param) {
+                return new XCell();
+            }
+        });
+    }
 
     static class XCell extends ListCell<String> {
         HBox hbox = new HBox();
@@ -54,6 +95,24 @@ public class MyReservationsController implements Initializable {
             super();
             hbox.getChildren().addAll(label, label2, label3, pane, button, editButton, cancelButton);
             HBox.setHgrow(pane, Priority.ALWAYS);
+            editButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxmls/ChangeReservationSeat.fxml"));
+                    ChangeReservation.reservation = findReservation(label.getText());
+                    Parent root1 = null;
+                    try {
+                        root1 = (Parent) fxmlLoader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Stage stage = new Stage();
+                    stage.setTitle("Seat details");
+                    stage.setScene(new Scene(root1));
+                    stage.showAndWait();
+                }
+            });
+
             cancelButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -62,18 +121,18 @@ public class MyReservationsController implements Initializable {
                     alert.setHeaderText("Look, a Confirmation Dialog");
                     alert.setContentText("Are you ok with this?");
                     Optional<ButtonType> result = alert.showAndWait();
-                    if (result.get() == ButtonType.OK){
-                            URL url = null;
-                            try {
-                                url = new URL("https://localhost:8443/SOAPServer/HelloWorldImplService?wsdl");
-                            } catch (MalformedURLException e) {
-                                e.printStackTrace();
-                            }
-                            QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
-                            Service service = Service.create(url, qname);
-                            HelloWorld hello = service.getPort(HelloWorld.class);
-                            RsiReservation test = findReservation(label.getText());
-                            hello.removeReservation(test);
+                    if (result.get() == ButtonType.OK) {
+                        URL url = null;
+                        try {
+                            url = new URL("https://localhost:8443/SOAPServer/HelloWorldImplService?wsdl");
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        }
+                        QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
+                        Service service = Service.create(url, qname);
+                        HelloWorld hello = service.getPort(HelloWorld.class);
+                        RsiReservation test = findReservation(label.getText());
+                        hello.removeReservation(test);
                     } else {
                         alert.close();
                     }
@@ -124,52 +183,13 @@ public class MyReservationsController implements Initializable {
                 setGraphic(null);
             } else {
                 lastItem = item;
-                label.setText(item!=null ? item : "<null>");
+                label.setText(item != null ? item : "<null>");
                 String[] text = label.getText().split("\t");
-                label.setText(text[0]+"-");
-                label2.setText(text[1]+"-");
+                label.setText(text[0] + "-");
+                label2.setText(text[1] + "-");
                 label3.setText(text[2]);
                 setGraphic(hbox);
             }
         }
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        URL url = null;
-        try {
-            url = new URL("https://localhost:8443/SOAPServer/HelloWorldImplService?wsdl");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
-        Service service = Service.create(url, qname);
-        HelloWorld hello = service.getPort(HelloWorld.class);
-        reservationList=hello.getReservations().stream().filter(reservation -> reservation.getClientReserverId().getId().intValue()==Everything.rsiClient.getId().intValue()).collect(Collectors.toList());
-        List<String> reservations = new ArrayList<>();
-        for (RsiReservation rsiReservation : reservationList){
-            StringBuilder sb = new StringBuilder();
-            sb.append(rsiReservation.getId()+"\t");
-            sb.append(rsiReservation.getScreeningId().getMovieId().getTitle()+"\t");
-            sb.append(rsiReservation.getScreeningId().getScreeningStart());
-            reservations.add(sb.toString());
-        }
-        ObservableList<String> list = FXCollections.observableArrayList(reservations);
-        listView.setItems(list);
-        listView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-            @Override
-            public ListCell<String> call(ListView<String> param) {
-                return new XCell();
-            }
-        });
-    }
-    public static RsiReservation findReservation(String id){
-        int reservationId = Integer.parseInt(id.replace("-",""));
-        for (RsiReservation rsiReservation : reservationList){
-            if (rsiReservation.getId().intValue()==reservationId){
-                return rsiReservation;
-            }
-        }
-        return null;
     }
 }

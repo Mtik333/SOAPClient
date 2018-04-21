@@ -1,4 +1,3 @@
-
 package com.mycompany.soapserv;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -10,9 +9,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * <p>Java class for rsiScreening complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="rsiScreening">
  *   &lt;complexContent>
@@ -27,15 +26,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "rsiScreening", propOrder = {
-    "auditoriumId",
-    "movieId",
-    "id",
-    "screeningStart"
+        "auditoriumId",
+        "movieId",
+        "id",
+        "screeningStart"
 })
 public class RsiScreening {
 
@@ -47,11 +44,9 @@ public class RsiScreening {
 
     /**
      * Gets the value of the auditoriumId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RsiAuditorium }
-     *     
+     *
+     * @return possible object is
+     * {@link RsiAuditorium }
      */
     public RsiAuditorium getAuditoriumId() {
         return auditoriumId;
@@ -59,11 +54,9 @@ public class RsiScreening {
 
     /**
      * Sets the value of the auditoriumId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RsiAuditorium }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link RsiAuditorium }
      */
     public void setAuditoriumId(RsiAuditorium value) {
         this.auditoriumId = value;
@@ -71,11 +64,9 @@ public class RsiScreening {
 
     /**
      * Gets the value of the movieId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RsiMovie }
-     *     
+     *
+     * @return possible object is
+     * {@link RsiMovie }
      */
     public RsiMovie getMovieId() {
         return movieId;
@@ -83,11 +74,9 @@ public class RsiScreening {
 
     /**
      * Sets the value of the movieId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RsiMovie }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link RsiMovie }
      */
     public void setMovieId(RsiMovie value) {
         this.movieId = value;
@@ -95,11 +84,9 @@ public class RsiScreening {
 
     /**
      * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     *
+     * @return possible object is
+     * {@link Integer }
      */
     public Integer getId() {
         return id;
@@ -107,11 +94,9 @@ public class RsiScreening {
 
     /**
      * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Integer }
      */
     public void setId(Integer value) {
         this.id = value;
@@ -119,11 +104,9 @@ public class RsiScreening {
 
     /**
      * Gets the value of the screeningStart property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @return possible object is
+     * {@link XMLGregorianCalendar }
      */
     public XMLGregorianCalendar getScreeningStart() {
         return screeningStart;
@@ -131,11 +114,9 @@ public class RsiScreening {
 
     /**
      * Sets the value of the screeningStart property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link XMLGregorianCalendar }
      */
     public void setScreeningStart(XMLGregorianCalendar value) {
         this.screeningStart = value;

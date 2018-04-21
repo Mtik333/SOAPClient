@@ -1,4 +1,3 @@
-
 package com.mycompany.soapserv;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for rsiReservation complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="rsiReservation">
  *   &lt;complexContent>
@@ -27,17 +26,15 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "rsiReservation", propOrder = {
-    "clientReserverId",
-    "screeningId",
-    "active",
-    "id",
-    "reservationContact",
-    "reserved"
+        "clientReserverId",
+        "screeningId",
+        "active",
+        "id",
+        "reservationContact",
+        "reserved"
 })
 public class RsiReservation {
 
@@ -50,11 +47,9 @@ public class RsiReservation {
 
     /**
      * Gets the value of the clientReserverId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RsiClient }
-     *     
+     *
+     * @return possible object is
+     * {@link RsiClient }
      */
     public RsiClient getClientReserverId() {
         return clientReserverId;
@@ -62,11 +57,9 @@ public class RsiReservation {
 
     /**
      * Sets the value of the clientReserverId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RsiClient }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link RsiClient }
      */
     public void setClientReserverId(RsiClient value) {
         this.clientReserverId = value;
@@ -74,11 +67,9 @@ public class RsiReservation {
 
     /**
      * Gets the value of the screeningId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RsiScreening }
-     *     
+     *
+     * @return possible object is
+     * {@link RsiScreening }
      */
     public RsiScreening getScreeningId() {
         return screeningId;
@@ -86,11 +77,9 @@ public class RsiReservation {
 
     /**
      * Sets the value of the screeningId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RsiScreening }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link RsiScreening }
      */
     public void setScreeningId(RsiScreening value) {
         this.screeningId = value;
@@ -98,11 +87,9 @@ public class RsiReservation {
 
     /**
      * Gets the value of the active property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
+     *
+     * @return possible object is
+     * {@link Boolean }
      */
     public Boolean isActive() {
         return active;
@@ -110,11 +97,9 @@ public class RsiReservation {
 
     /**
      * Sets the value of the active property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Boolean }
      */
     public void setActive(Boolean value) {
         this.active = value;
@@ -122,11 +107,9 @@ public class RsiReservation {
 
     /**
      * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     *
+     * @return possible object is
+     * {@link Integer }
      */
     public Integer getId() {
         return id;
@@ -134,11 +117,9 @@ public class RsiReservation {
 
     /**
      * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Integer }
      */
     public void setId(Integer value) {
         this.id = value;
@@ -146,11 +127,9 @@ public class RsiReservation {
 
     /**
      * Gets the value of the reservationContact property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getReservationContact() {
         return reservationContact;
@@ -158,11 +137,9 @@ public class RsiReservation {
 
     /**
      * Sets the value of the reservationContact property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setReservationContact(String value) {
         this.reservationContact = value;
@@ -170,11 +147,9 @@ public class RsiReservation {
 
     /**
      * Gets the value of the reserved property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
+     *
+     * @return possible object is
+     * {@link Boolean }
      */
     public Boolean isReserved() {
         return reserved;
@@ -182,11 +157,9 @@ public class RsiReservation {
 
     /**
      * Sets the value of the reserved property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Boolean }
      */
     public void setReserved(Boolean value) {
         this.reserved = value;

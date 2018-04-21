@@ -35,6 +35,7 @@ import java.util.stream.Collectors;
 public class MovieDetailsController implements Initializable {
 
     public static RsiMovie movie;
+    static Map<RsiScreening, RsiAuditorium> mapScreeningAuditorium = new HashMap<>();
     @FXML
     public ImageView imageView;
     @FXML
@@ -45,7 +46,70 @@ public class MovieDetailsController implements Initializable {
     public TextField actorsTextField;
     @FXML
     public ListView screeningsListView;
-    static Map<RsiScreening, RsiAuditorium> mapScreeningAuditorium = new HashMap<>();
+
+    private static Map.Entry<RsiScreening, RsiAuditorium> findScreening(String name) {
+        for (Map.Entry<RsiScreening, RsiAuditorium> entry : mapScreeningAuditorium.entrySet()) {
+            String[] test2 = name.split("\t");
+            String test = test2[0];
+            if (entry.getValue().getName().contentEquals(test)) {
+                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm");
+                String date;
+                date = sdf.format(entry.getKey().getScreeningStart().toGregorianCalendar().getTime());
+                if (date.contentEquals(test2[2]))
+                    return entry;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        mapScreeningAuditorium = new HashMap<>();
+        URL url = null;
+        try {
+            url = new URL("https://localhost:8443/SOAPServer/HelloWorldImplService?wsdl");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
+        Service service = Service.create(url, qname);
+        HelloWorld hello = service.getPort(HelloWorld.class);
+        byte[] bytes = hello.downloadImage("project.png");
+        ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+        Image image = new Image(bais);
+        imageView.setImage(image);
+        titleTextField.setText(movie.getTitle());
+        directorTextField.setText(movie.getDirector());
+        actorsTextField.setText(movie.getActors());
+        List<RsiScreening> screeningCollection = hello.getScreenings().stream().filter(rsiScreening -> rsiScreening.getMovieId().getId().equals(movie.getId())).collect(Collectors.toList());
+        for (RsiScreening rsiScreening : screeningCollection) {
+            getAuditoriumNames(hello, rsiScreening);
+        }
+        List<String> titles = new ArrayList<>();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm");
+        String date;
+        for (Map.Entry<RsiScreening, RsiAuditorium> entry : mapScreeningAuditorium.entrySet()) {
+            date = sdf.format(entry.getKey().getScreeningStart().toGregorianCalendar().getTime());
+            titles.add(entry.getValue().getName() + "\t\t" + date);
+        }
+        ObservableList<String> list = FXCollections.observableArrayList(titles);
+        screeningsListView.setItems(list);
+        screeningsListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+            @Override
+            public ListCell<String> call(ListView<String> param) {
+                return new XCell();
+            }
+        });
+    }
+
+    private void getAuditoriumNames(HelloWorld helloWorld, RsiScreening screening) {
+        List<RsiAuditorium> auditoriums = helloWorld.getAuditoriums();
+        for (RsiAuditorium auditorium : auditoriums) {
+            if (screening.getAuditoriumId().equals(screening.getAuditoriumId())) {
+                mapScreeningAuditorium.put(screening, auditorium);
+            }
+        }
+    }
 
     static class XCell extends ListCell<String> {
         HBox hbox = new HBox();
@@ -62,8 +126,8 @@ public class MovieDetailsController implements Initializable {
                 @Override
                 public void handle(ActionEvent event) {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxmls/SeatDetails.fxml"));
-                    SeatDetails.rsiScreening=findScreening(lastItem).getKey();
-                    SeatDetails.rsiAuditorium=findScreening(lastItem).getValue();
+                    SeatDetails.rsiScreening = findScreening(lastItem).getKey();
+                    SeatDetails.rsiAuditorium = findScreening(lastItem).getValue();
                     Parent root1 = null;
                     try {
                         root1 = (Parent) fxmlLoader.load();
@@ -87,73 +151,9 @@ public class MovieDetailsController implements Initializable {
                 setGraphic(null);
             } else {
                 lastItem = item;
-                label.setText(item!=null ? item : "<null>");
+                label.setText(item != null ? item : "<null>");
                 setGraphic(hbox);
             }
         }
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        mapScreeningAuditorium = new HashMap<>();
-        URL url = null;
-        try {
-            url = new URL("https://localhost:8443/SOAPServer/HelloWorldImplService?wsdl");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
-        Service service = Service.create(url, qname);
-        HelloWorld hello = service.getPort(HelloWorld.class);
-        byte[] bytes = hello.downloadImage("project.png");
-        ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-        Image image = new Image(bais);
-        imageView.setImage(image);
-        titleTextField.setText(movie.getTitle());
-        directorTextField.setText(movie.getDirector());
-        actorsTextField.setText(movie.getActors());
-        List<RsiScreening> screeningCollection = hello.getScreenings().stream().filter(rsiScreening -> rsiScreening.getMovieId().getId().equals(movie.getId())).collect(Collectors.toList());
-        for (RsiScreening rsiScreening : screeningCollection){
-            getAuditoriumNames(hello,rsiScreening);
-        }
-        List<String> titles = new ArrayList<>();
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm");
-        String date;
-        for (Map.Entry<RsiScreening,RsiAuditorium> entry : mapScreeningAuditorium.entrySet()){
-            date = sdf.format(entry.getKey().getScreeningStart().toGregorianCalendar().getTime());
-            titles.add(entry.getValue().getName()+"\t\t"+date);
-        }
-        ObservableList<String> list = FXCollections.observableArrayList(titles);
-        screeningsListView.setItems(list);
-        screeningsListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-            @Override
-            public ListCell<String> call(ListView<String> param) {
-                return new XCell();
-            }
-        });
-    }
-
-    private void getAuditoriumNames(HelloWorld helloWorld, RsiScreening screening){
-        List<RsiAuditorium> auditoriums = helloWorld.getAuditoriums();
-        for (RsiAuditorium auditorium : auditoriums){
-            if (screening.getAuditoriumId().equals(screening.getAuditoriumId())){
-                mapScreeningAuditorium.put(screening,auditorium);
-            }
-        }
-    }
-
-    private static Map.Entry<RsiScreening, RsiAuditorium> findScreening(String name){
-        for (Map.Entry<RsiScreening,RsiAuditorium> entry : mapScreeningAuditorium.entrySet()){
-            String[] test2 = name.split("\t");
-            String test = test2[0];
-            if (entry.getValue().getName().contentEquals(test)){
-                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm");
-                String date;
-                date = sdf.format(entry.getKey().getScreeningStart().toGregorianCalendar().getTime());
-                if (date.contentEquals(test2[2]))
-                    return entry;
-            }
-        }
-        return null;
     }
 }

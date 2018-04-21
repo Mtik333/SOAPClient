@@ -1,4 +1,3 @@
-
 package com.mycompany.soapserv;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for product complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="product">
  *   &lt;complexContent>
@@ -24,14 +23,12 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "product", propOrder = {
-    "nazwa",
-    "opis",
-    "cena"
+        "nazwa",
+        "opis",
+        "cena"
 })
 public class Product {
 
@@ -41,11 +38,9 @@ public class Product {
 
     /**
      * Gets the value of the nazwa property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getNazwa() {
         return nazwa;
@@ -53,11 +48,9 @@ public class Product {
 
     /**
      * Sets the value of the nazwa property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setNazwa(String value) {
         this.nazwa = value;
@@ -65,11 +58,9 @@ public class Product {
 
     /**
      * Gets the value of the opis property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getOpis() {
         return opis;
@@ -77,11 +68,9 @@ public class Product {
 
     /**
      * Sets the value of the opis property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setOpis(String value) {
         this.opis = value;
@@ -89,7 +78,6 @@ public class Product {
 
     /**
      * Gets the value of the cena property.
-     * 
      */
     public int getCena() {
         return cena;
@@ -97,7 +85,6 @@ public class Product {
 
     /**
      * Sets the value of the cena property.
-     * 
      */
     public void setCena(int value) {
         this.cena = value;

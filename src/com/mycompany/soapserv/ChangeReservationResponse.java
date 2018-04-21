@@ -6,12 +6,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getProducts complex type.
+ * <p>Java class for changeReservationResponse complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="getProducts">
+ * &lt;complexType name="changeReservationResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -22,8 +22,8 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getProducts")
-public class GetProducts {
+@XmlType(name = "changeReservationResponse")
+public class ChangeReservationResponse {
 
 
 }

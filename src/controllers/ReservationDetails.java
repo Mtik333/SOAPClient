@@ -30,15 +30,15 @@ public class ReservationDetails implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         seatId.setText(seat.getId().toString());
-        numbers.getItems().addAll(FXCollections.observableArrayList(1,2,3));
+        numbers.getItems().addAll(FXCollections.observableArrayList(1, 2, 3));
         System.out.println(seat.getId());
         button.setOnMouseClicked(event -> {
-            createReservation();
-            }
+                    createReservation();
+                }
         );
     }
 
-    private void createReservation(){
+    private void createReservation() {
         int number = (int) numbers.getSelectionModel().getSelectedItem();
         URL url = null;
         try {
@@ -49,17 +49,17 @@ public class ReservationDetails implements Initializable {
         QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
         Service service = Service.create(url, qname);
         HelloWorld hello = service.getPort(HelloWorld.class);
-        for (int i=0; i<number; i++){
+        for (int i = 0; i < number; i++) {
             RsiReservation rsiReservation = new RsiReservation();
             rsiReservation.setActive(true);
             rsiReservation.setReserved(true);
             rsiReservation.setClientReserverId(Everything.rsiClient);
             rsiReservation.setScreeningId(screening);
-            hello.createReservation(rsiReservation,findSeatByNumber(hello, seat.getId()+i));
+            hello.createReservation(rsiReservation, findSeatByNumber(hello, seat.getId() + i));
         }
     }
 
-    private RsiSeat findSeatByNumber(HelloWorld hello, int number){
-        return hello.getSeats().stream().filter(seat -> seat.getId()==number).findFirst().get();
+    private RsiSeat findSeatByNumber(HelloWorld hello, int number) {
+        return hello.getSeats().stream().filter(seat -> seat.getId() == number).findFirst().get();
     }
 }
