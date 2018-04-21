@@ -1,8 +1,6 @@
 
 package com.mycompany.soapserv;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -18,7 +16,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="rsiSeatReservedCollection" type="{http://soapserv.mycompany.com/}rsiSeatReserved" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="clientReserverId" type="{http://soapserv.mycompany.com/}rsiClient" minOccurs="0"/>
+ *         &lt;element name="screeningId" type="{http://soapserv.mycompany.com/}rsiScreening" minOccurs="0"/>
  *         &lt;element name="active" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="reservationContact" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -33,7 +32,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "rsiReservation", propOrder = {
-    "rsiSeatReservedCollection",
+    "clientReserverId",
+    "screeningId",
     "active",
     "id",
     "reservationContact",
@@ -41,39 +41,59 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class RsiReservation {
 
-    protected List<RsiSeatReserved> rsiSeatReservedCollection;
+    protected RsiClient clientReserverId;
+    protected RsiScreening screeningId;
     protected Boolean active;
     protected Integer id;
     protected String reservationContact;
     protected Boolean reserved;
 
     /**
-     * Gets the value of the rsiSeatReservedCollection property.
+     * Gets the value of the clientReserverId property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the rsiSeatReservedCollection property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getRsiSeatReservedCollection().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link RsiSeatReserved }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link RsiClient }
+     *     
      */
-    public List<RsiSeatReserved> getRsiSeatReservedCollection() {
-        if (rsiSeatReservedCollection == null) {
-            rsiSeatReservedCollection = new ArrayList<RsiSeatReserved>();
-        }
-        return this.rsiSeatReservedCollection;
+    public RsiClient getClientReserverId() {
+        return clientReserverId;
+    }
+
+    /**
+     * Sets the value of the clientReserverId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RsiClient }
+     *     
+     */
+    public void setClientReserverId(RsiClient value) {
+        this.clientReserverId = value;
+    }
+
+    /**
+     * Gets the value of the screeningId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link RsiScreening }
+     *     
+     */
+    public RsiScreening getScreeningId() {
+        return screeningId;
+    }
+
+    /**
+     * Sets the value of the screeningId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RsiScreening }
+     *     
+     */
+    public void setScreeningId(RsiScreening value) {
+        this.screeningId = value;
     }
 
     /**

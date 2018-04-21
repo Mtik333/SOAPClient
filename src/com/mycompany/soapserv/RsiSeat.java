@@ -1,8 +1,6 @@
 
 package com.mycompany.soapserv;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -18,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="rsiSeatReservedCollection" type="{http://soapserv.mycompany.com/}rsiSeatReserved" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="auditoriumId" type="{http://soapserv.mycompany.com/}rsiAuditorium" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="seatNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="seatRow" type="{http://www.w3.org/2001/XMLSchema}int"/>
@@ -32,45 +30,40 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "rsiSeat", propOrder = {
-    "rsiSeatReservedCollection",
+    "auditoriumId",
     "id",
     "seatNumber",
     "seatRow"
 })
 public class RsiSeat {
 
-    protected List<RsiSeatReserved> rsiSeatReservedCollection;
+    protected RsiAuditorium auditoriumId;
     protected Integer id;
     protected int seatNumber;
     protected int seatRow;
 
     /**
-     * Gets the value of the rsiSeatReservedCollection property.
+     * Gets the value of the auditoriumId property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the rsiSeatReservedCollection property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getRsiSeatReservedCollection().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link RsiSeatReserved }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link RsiAuditorium }
+     *     
      */
-    public List<RsiSeatReserved> getRsiSeatReservedCollection() {
-        if (rsiSeatReservedCollection == null) {
-            rsiSeatReservedCollection = new ArrayList<RsiSeatReserved>();
-        }
-        return this.rsiSeatReservedCollection;
+    public RsiAuditorium getAuditoriumId() {
+        return auditoriumId;
+    }
+
+    /**
+     * Sets the value of the auditoriumId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RsiAuditorium }
+     *     
+     */
+    public void setAuditoriumId(RsiAuditorium value) {
+        this.auditoriumId = value;
     }
 
     /**

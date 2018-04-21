@@ -28,6 +28,38 @@ public interface HelloWorld {
 
     /**
      * 
+     * @return
+     *     returns java.lang.Boolean
+     * @throws InvalidPasswordException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "authenticateClient", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.AuthenticateClient")
+    @ResponseWrapper(localName = "authenticateClientResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.AuthenticateClientResponse")
+    @Action(input = "http://soapserv.mycompany.com/HelloWorld/authenticateClientRequest", output = "http://soapserv.mycompany.com/HelloWorld/authenticateClientResponse", fault = {
+        @FaultAction(className = InvalidPasswordException_Exception.class, value = "http://soapserv.mycompany.com/HelloWorld/authenticateClient/Fault/InvalidPasswordException")
+    })
+    public Boolean authenticateClient()
+        throws InvalidPasswordException_Exception
+    ;
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "createReservation", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.CreateReservation")
+    @ResponseWrapper(localName = "createReservationResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.CreateReservationResponse")
+    @Action(input = "http://soapserv.mycompany.com/HelloWorld/createReservationRequest", output = "http://soapserv.mycompany.com/HelloWorld/createReservationResponse")
+    public void createReservation(
+        @WebParam(name = "arg0", targetNamespace = "")
+        RsiReservation arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        RsiSeat arg1);
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns java.lang.String
@@ -49,31 +81,38 @@ public interface HelloWorld {
     /**
      * 
      * @return
-     *     returns java.lang.Boolean
-     * @throws InvalidPasswordException_Exception
+     *     returns java.util.List<com.mycompany.soapserv.RsiReservation>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "authenticateClient", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.AuthenticateClient")
-    @ResponseWrapper(localName = "authenticateClientResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.AuthenticateClientResponse")
-    @Action(input = "http://soapserv.mycompany.com/HelloWorld/authenticateClientRequest", output = "http://soapserv.mycompany.com/HelloWorld/authenticateClientResponse", fault = {
-        @FaultAction(className = InvalidPasswordException_Exception.class, value = "http://soapserv.mycompany.com/HelloWorld/authenticateClient/Fault/InvalidPasswordException")
-    })
-    public Boolean authenticateClient()
-        throws InvalidPasswordException_Exception
-    ;
+    @RequestWrapper(localName = "getReservations", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetReservations")
+    @ResponseWrapper(localName = "getReservationsResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetReservationsResponse")
+    @Action(input = "http://soapserv.mycompany.com/HelloWorld/getReservationsRequest", output = "http://soapserv.mycompany.com/HelloWorld/getReservationsResponse")
+    public List<RsiReservation> getReservations();
 
     /**
      * 
      * @return
-     *     returns java.util.List<com.mycompany.soapserv.RsiMovie>
+     *     returns java.util.List<com.mycompany.soapserv.RsiSeat>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getMovies", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetMovies")
-    @ResponseWrapper(localName = "getMoviesResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetMoviesResponse")
-    @Action(input = "http://soapserv.mycompany.com/HelloWorld/getMoviesRequest", output = "http://soapserv.mycompany.com/HelloWorld/getMoviesResponse")
-    public List<RsiMovie> getMovies();
+    @RequestWrapper(localName = "getSeats", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetSeats")
+    @ResponseWrapper(localName = "getSeatsResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetSeatsResponse")
+    @Action(input = "http://soapserv.mycompany.com/HelloWorld/getSeatsRequest", output = "http://soapserv.mycompany.com/HelloWorld/getSeatsResponse")
+    public List<RsiSeat> getSeats();
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<com.mycompany.soapserv.Product>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getProducts", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetProducts")
+    @ResponseWrapper(localName = "getProductsResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetProductsResponse")
+    @Action(input = "http://soapserv.mycompany.com/HelloWorld/getProductsRequest", output = "http://soapserv.mycompany.com/HelloWorld/getProductsResponse")
+    public List<Product> getProducts();
 
     /**
      * 
@@ -93,18 +132,6 @@ public interface HelloWorld {
     /**
      * 
      * @return
-     *     returns java.util.List<com.mycompany.soapserv.RsiClient>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getClients", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetClients")
-    @ResponseWrapper(localName = "getClientsResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetClientsResponse")
-    @Action(input = "http://soapserv.mycompany.com/HelloWorld/getClientsRequest", output = "http://soapserv.mycompany.com/HelloWorld/getClientsResponse")
-    public List<RsiClient> getClients();
-
-    /**
-     * 
-     * @return
      *     returns java.util.List<com.mycompany.soapserv.RsiScreening>
      */
     @WebMethod
@@ -117,14 +144,14 @@ public interface HelloWorld {
     /**
      * 
      * @return
-     *     returns java.util.List<com.mycompany.soapserv.Product>
+     *     returns java.util.List<com.mycompany.soapserv.RsiMovie>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getProducts", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetProducts")
-    @ResponseWrapper(localName = "getProductsResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetProductsResponse")
-    @Action(input = "http://soapserv.mycompany.com/HelloWorld/getProductsRequest", output = "http://soapserv.mycompany.com/HelloWorld/getProductsResponse")
-    public List<Product> getProducts();
+    @RequestWrapper(localName = "getMovies", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetMovies")
+    @ResponseWrapper(localName = "getMoviesResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetMoviesResponse")
+    @Action(input = "http://soapserv.mycompany.com/HelloWorld/getMoviesRequest", output = "http://soapserv.mycompany.com/HelloWorld/getMoviesResponse")
+    public List<RsiMovie> getMovies();
 
     /**
      * 
@@ -141,14 +168,14 @@ public interface HelloWorld {
     /**
      * 
      * @return
-     *     returns java.util.List<com.mycompany.soapserv.RsiSeat>
+     *     returns java.util.List<com.mycompany.soapserv.RsiClient>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getSeats", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetSeats")
-    @ResponseWrapper(localName = "getSeatsResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetSeatsResponse")
-    @Action(input = "http://soapserv.mycompany.com/HelloWorld/getSeatsRequest", output = "http://soapserv.mycompany.com/HelloWorld/getSeatsResponse")
-    public List<RsiSeat> getSeats();
+    @RequestWrapper(localName = "getClients", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetClients")
+    @ResponseWrapper(localName = "getClientsResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetClientsResponse")
+    @Action(input = "http://soapserv.mycompany.com/HelloWorld/getClientsRequest", output = "http://soapserv.mycompany.com/HelloWorld/getClientsResponse")
+    public List<RsiClient> getClients();
 
     /**
      * 
@@ -161,29 +188,5 @@ public interface HelloWorld {
     @ResponseWrapper(localName = "getReservedSeatsResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetReservedSeatsResponse")
     @Action(input = "http://soapserv.mycompany.com/HelloWorld/getReservedSeatsRequest", output = "http://soapserv.mycompany.com/HelloWorld/getReservedSeatsResponse")
     public List<RsiSeatReserved> getReservedSeats();
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<com.mycompany.soapserv.RsiReservation>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getReservations", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetReservations")
-    @ResponseWrapper(localName = "getReservationsResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.GetReservationsResponse")
-    @Action(input = "http://soapserv.mycompany.com/HelloWorld/getReservationsRequest", output = "http://soapserv.mycompany.com/HelloWorld/getReservationsResponse")
-    public List<RsiReservation> getReservations();
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "createReservation", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.CreateReservation")
-    @ResponseWrapper(localName = "createReservationResponse", targetNamespace = "http://soapserv.mycompany.com/", className = "com.mycompany.soapserv.CreateReservationResponse")
-    @Action(input = "http://soapserv.mycompany.com/HelloWorld/createReservationRequest", output = "http://soapserv.mycompany.com/HelloWorld/createReservationResponse")
-    public void createReservation(
-        @WebParam(name = "arg0", targetNamespace = "")
-        RsiReservation arg0);
 
 }

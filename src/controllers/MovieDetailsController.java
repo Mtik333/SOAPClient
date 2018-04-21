@@ -73,7 +73,7 @@ public class MovieDetailsController implements Initializable {
                     Stage stage = new Stage();
                     stage.setTitle("Seat details");
                     stage.setScene(new Scene(root1));
-                    stage.show();
+                    stage.showAndWait();
                 }
             });
         }
@@ -105,13 +105,13 @@ public class MovieDetailsController implements Initializable {
         QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
         Service service = Service.create(url, qname);
         HelloWorld hello = service.getPort(HelloWorld.class);
-        Image image = new Image(new ByteArrayInputStream(hello.downloadImage("rss.png")));
-        if (image!=null)
-            imageView.setImage(image);
+//        Image image = new Image(new ByteArrayInputStream(hello.downloadImage("rss.png")));
+//        if (image!=null)
+//            imageView.setImage(image);
         titleTextField.setText(movie.getTitle());
         directorTextField.setText(movie.getDirector());
         actorsTextField.setText(movie.getActors());
-        List<RsiScreening> screeningCollection = movie.getRsiScreeningCollection();
+        List<RsiScreening> screeningCollection = hello.getScreenings().stream().filter(rsiScreening -> rsiScreening.getMovieId().getId().equals(movie.getId())).collect(Collectors.toList());
         for (RsiScreening rsiScreening : screeningCollection){
             getAuditoriumNames(hello,rsiScreening);
         }
@@ -135,18 +135,22 @@ public class MovieDetailsController implements Initializable {
     private void getAuditoriumNames(HelloWorld helloWorld, RsiScreening screening){
         List<RsiAuditorium> auditoriums = helloWorld.getAuditoriums();
         for (RsiAuditorium auditorium : auditoriums){
-            Optional<RsiScreening> test = auditorium.getRsiScreeningCollection().stream().filter(screen -> screen.getId().equals(screening.getId())).findFirst();
-            if (test.isPresent()){
-                mapScreeningAuditorium.put(test.get(),auditorium);
+            if (screening.getAuditoriumId().equals(screening.getAuditoriumId())){
+                mapScreeningAuditorium.put(screening,auditorium);
             }
         }
     }
 
     private static Map.Entry<RsiScreening, RsiAuditorium> findScreening(String name){
         for (Map.Entry<RsiScreening,RsiAuditorium> entry : mapScreeningAuditorium.entrySet()){
-            String test = name.split("\t")[0];
+            String[] test2 = name.split("\t");
+            String test = test2[0];
             if (entry.getValue().getName().contentEquals(test)){
-                return entry;
+                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm");
+                String date;
+                date = sdf.format(entry.getKey().getScreeningStart().toGregorianCalendar().getTime());
+                if (date.contentEquals(test2[2]))
+                    return entry;
             }
         }
         return null;

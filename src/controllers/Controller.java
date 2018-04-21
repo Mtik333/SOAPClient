@@ -2,6 +2,7 @@ package controllers;
 
 import com.mycompany.soapserv.HelloWorld;
 import com.mycompany.soapserv.InvalidPasswordException_Exception;
+import com.mycompany.soapserv.RsiClient;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -50,6 +51,8 @@ public class Controller implements Initializable {
         req_ctx.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
         boolean okay = hello.authenticateClient();
         int i=0;
+        List<RsiClient> clients = hello.getClients();
+        Everything.setClient(clients,username2);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxmls/FXMLDocument.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();

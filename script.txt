@@ -4,7 +4,9 @@ Zmienić timestamp i boolean bo to MySQL
 create table RSI_AUDITORIUM
 (
 	ID INTEGER not null
-		primary key,
+		primary key
+		GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),
 	NAME VARCHAR(30) not null,
 	SEATS_NUMBER INTEGER not null
 )
@@ -13,7 +15,9 @@ create table RSI_AUDITORIUM
 create table RSI_CLIENT
 (
 	ID INTEGER not null
-		primary key,
+		primary key
+		GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),
 	USERNAME VARCHAR(30) not null,
 	PASSWORD VARCHAR(30) not null
 )
@@ -22,7 +26,9 @@ create table RSI_CLIENT
 create table RSI_MOVIE
 (
 	ID INTEGER not null
-		primary key,
+		primary key
+		GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),
 	TITLE VARCHAR(100) not null,
 	DIRECTOR VARCHAR(100) not null,
 	ACTORS VARCHAR(1000),
@@ -34,7 +40,9 @@ create table RSI_MOVIE
 create table RSI_SEAT
 (
 	ID INTEGER not null
-		primary key,
+		primary key
+		GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),
 	SEAT_ROW INTEGER not null,
 	SEAT_NUMBER INTEGER not null,
 	AUDITORIUM_ID INTEGER not null
@@ -46,21 +54,25 @@ create table RSI_SEAT
 create table RSI_SCREENING
 (
 	ID INTEGER not null
-		primary key,
+		primary key
+		GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),
 	MOVIE_ID INTEGER not null
 		constraint RSI_SCREENING_RSI_MOVIE_ID_FK
 			references RSI_MOVIE,
 	AUDITORIUM_ID INTEGER not null
 		constraint RSI_SCREENING_RSI_AUDITORIUM_ID_FK
 			references RSI_AUDITORIUM,
-	SCREENING_START TIMESTAMP(9)
+	SCREENING_START TIMESTAMP
 )
 ;
 
 create table RSI_RESERVATION
 (
 	ID INTEGER not null
-		primary key,
+		primary key
+		GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),
 	SCREENING_ID INTEGER not null
 		constraint RSI_RESERVATION_RSI_SCREENING_ID_FK
 			references RSI_SCREENING,
@@ -68,8 +80,8 @@ create table RSI_RESERVATION
 		constraint RSI_RESERVATION_RSI_CLIENT_ID_FK
 			references RSI_CLIENT,
 	RESERVATION_CONTACT VARCHAR(1024),
-	RESERVED BOOLEAN(1),
-	ACTIVE BOOLEAN(1)
+	RESERVED BOOLEAN,
+	ACTIVE BOOLEAN
 )
 ;
 
@@ -77,7 +89,9 @@ create table RSI_RESERVATION
 create table RSI_SEAT_RESERVED
 (
 	ID INTEGER not null
-		primary key,
+		primary key
+		GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),
 	SEAT_ID INTEGER not null
 		constraint SEAT_RESERVED_RSI_SEAT_ID_FK
 			references RSI_SEAT,

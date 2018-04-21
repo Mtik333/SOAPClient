@@ -67,7 +67,7 @@ public class FXMLDocumentController implements Initializable {
 //                    MovieDetailsController controller =
 //                            fxmlLoader.<MovieDetailsController>getController();
 //                    controller.setMovie(FXMLDocumentController.findMovie(lastItem));
-                    stage.show();
+                    stage.showAndWait();
                 }
             });
         }

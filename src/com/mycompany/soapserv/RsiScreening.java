@@ -1,8 +1,6 @@
 
 package com.mycompany.soapserv;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchemaType;
@@ -20,8 +18,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="rsiReservationCollection" type="{http://soapserv.mycompany.com/}rsiReservation" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="rsiSeatReservedCollection" type="{http://soapserv.mycompany.com/}rsiSeatReserved" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="auditoriumId" type="{http://soapserv.mycompany.com/}rsiAuditorium" minOccurs="0"/>
+ *         &lt;element name="movieId" type="{http://soapserv.mycompany.com/}rsiMovie" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="screeningStart" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *       &lt;/sequence>
@@ -34,75 +32,65 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "rsiScreening", propOrder = {
-    "rsiReservationCollection",
-    "rsiSeatReservedCollection",
+    "auditoriumId",
+    "movieId",
     "id",
     "screeningStart"
 })
 public class RsiScreening {
 
-    protected List<RsiReservation> rsiReservationCollection;
-    protected List<RsiSeatReserved> rsiSeatReservedCollection;
+    protected RsiAuditorium auditoriumId;
+    protected RsiMovie movieId;
     protected Integer id;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar screeningStart;
 
     /**
-     * Gets the value of the rsiReservationCollection property.
+     * Gets the value of the auditoriumId property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the rsiReservationCollection property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getRsiReservationCollection().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link RsiReservation }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link RsiAuditorium }
+     *     
      */
-    public List<RsiReservation> getRsiReservationCollection() {
-        if (rsiReservationCollection == null) {
-            rsiReservationCollection = new ArrayList<RsiReservation>();
-        }
-        return this.rsiReservationCollection;
+    public RsiAuditorium getAuditoriumId() {
+        return auditoriumId;
     }
 
     /**
-     * Gets the value of the rsiSeatReservedCollection property.
+     * Sets the value of the auditoriumId property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the rsiSeatReservedCollection property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getRsiSeatReservedCollection().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link RsiSeatReserved }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link RsiAuditorium }
+     *     
      */
-    public List<RsiSeatReserved> getRsiSeatReservedCollection() {
-        if (rsiSeatReservedCollection == null) {
-            rsiSeatReservedCollection = new ArrayList<RsiSeatReserved>();
-        }
-        return this.rsiSeatReservedCollection;
+    public void setAuditoriumId(RsiAuditorium value) {
+        this.auditoriumId = value;
+    }
+
+    /**
+     * Gets the value of the movieId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link RsiMovie }
+     *     
+     */
+    public RsiMovie getMovieId() {
+        return movieId;
+    }
+
+    /**
+     * Sets the value of the movieId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RsiMovie }
+     *     
+     */
+    public void setMovieId(RsiMovie value) {
+        this.movieId = value;
     }
 
     /**

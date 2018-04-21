@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class SeatDetails implements Initializable {
     @FXML
@@ -39,36 +41,38 @@ public class SeatDetails implements Initializable {
         QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
         Service service = Service.create(url, qname);
         HelloWorld hello = service.getPort(HelloWorld.class);
-        seatReservedsFromScreening = rsiScreening.getRsiSeatReservedCollection();
+        seatReservedsFromScreening = hello.getReservedSeats().stream().filter(rsiSeatReserved -> rsiSeatReserved.getScreeningId().getId().equals(rsiScreening.getId())).collect(Collectors.toList());
         seats = hello.getSeats();
-        seatReservedsFromSeat = seats.get(0).getRsiSeatReservedCollection();
-
         for (int i=0; i<25; i++){
             Node node = gridPane.getChildren().get(i);
             Pane pane = new Pane();
-            pane.setOnMouseClicked(e->{
-                Node source = (Node)e.getSource();
-                reservationMaker(GridPane.getColumnIndex(source)+1, GridPane.getRowIndex(source)+1);
-            });
             Label label = new Label();
-            label.setText(String.valueOf(i+1));
+            label.setText(String.valueOf((seats.get(i).getSeatNumber()-1)*5+seats.get(i).getSeatRow()));
             pane.getChildren().add(label);
             if (test2(seats.get(i))){
                 pane.setStyle("-fx-background-color: red;");
             }
             else pane.setStyle("-fx-background-color: green;");
+            pane.setOnMouseClicked(e->{
+                Node source = (Node)e.getSource();
+                if (source.getStyle().contains("red")){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Reserved seat");
+                    alert.setContentText("You can't reserve this seat");
+                    alert.showAndWait();
+                }
+                else reservationMaker(GridPane.getColumnIndex(source)+1, GridPane.getRowIndex(source)+1);
+            });
             //gridPane.getChildren().add(0,pane);
             gridPane.add(pane,i/5,i%5);
         }
     }
 
     public boolean test2(RsiSeat seat){
-        for (RsiSeatReserved seatReserved : seat.getRsiSeatReservedCollection()){
             for (RsiSeatReserved screeningSeatReserver : seatReservedsFromScreening){
-                if (seatReserved.getId().equals(screeningSeatReserver.getId()))
+                if (screeningSeatReserver.getSeatId().getId().equals(seat.getId()))
                     return true;
             }
-        }
         return false;
     }
 
@@ -96,7 +100,7 @@ public class SeatDetails implements Initializable {
         Stage stage = new Stage();
         stage.setTitle("Seat details");
         stage.setScene(new Scene(root1));
-        stage.show();
+        stage.showAndWait();
     }
 
 }

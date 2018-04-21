@@ -6,15 +6,30 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReservationDetails">
    <children>
-      <HBox prefHeight="31.0" prefWidth="200.0">
+      <VBox prefHeight="196.0" prefWidth="194.0">
          <children>
-            <Label prefHeight="25.0" prefWidth="163.0" text="E-mail" />
-            <TextField />
+            <HBox prefHeight="31.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="25.0" prefWidth="163.0" text="E-mail" />
+                  <TextField />
+               </children>
+            </HBox>
+            <HBox prefHeight="31.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="25.0" prefWidth="163.0" text="Starting seat" />
+                  <TextField fx:id="seatId" editable="false" />
+               </children>
+            </HBox>
+            <HBox prefHeight="31.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="25.0" prefWidth="163.0" text="Number of seats" />
+                  <ChoiceBox fx:id="numbers" prefWidth="150.0" />
+               </children>
+            </HBox>
+            <Button fx:id="button" mnemonicParsing="false" text="Reserve ticket" />
          </children>
-      </HBox>
-      <Button fx:id="button" layoutY="31.0" mnemonicParsing="false" text="Reserve ticket" />
+      </VBox>
    </children>
 </AnchorPane>
