@@ -5,13 +5,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,9 +42,16 @@ public class ChangeReservation implements Initializable {
             public void handle(ActionEvent event) {
                 RsiSeat newSeat = seats.stream().filter(rsiSeat -> rsiSeat.getId().intValue() == (int) choiceBox.getSelectionModel().getSelectedItem()).findFirst().get();
                 hello.changeReservation(reservation, newSeat);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Reserved seat");
+                alert.setContentText("You changed reservation succesfully");
+                alert.showAndWait();
+                Stage stage = (Stage) choiceBox.getScene().getWindow();
+                stage.close();
             }
         });
     }
+
     @FXML
     public void dismiss() {
         Stage stage = (Stage) choiceBox.getScene().getWindow();

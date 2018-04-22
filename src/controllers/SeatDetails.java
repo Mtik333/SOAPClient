@@ -15,10 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +64,7 @@ public class SeatDetails implements Initializable {
 
     public boolean test2(RsiSeat seat) {
         for (RsiSeatReserved screeningSeatReserver : seatReservedsFromScreening) {
-            if (screeningSeatReserver.getSeatId().getId().intValue()==seat.getId().intValue())
+            if (screeningSeatReserver.getSeatId().getId().intValue() == seat.getId().intValue())
                 return true;
         }
         return false;

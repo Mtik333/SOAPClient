@@ -19,11 +19,9 @@ import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
+import javax.xml.ws.soap.MTOMFeature;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -65,8 +63,8 @@ public class MovieDetailsController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         mapScreeningAuditorium = new HashMap<>();
         HelloWorldImplService implService = new HelloWorldImplService();
-        HelloWorld hello = implService.getHelloWorldImplPort();
-        byte[] bytes = hello.downloadImage(movie.getId() +".png");
+        HelloWorld hello = implService.getHelloWorldImplPort(new MTOMFeature());
+        byte[] bytes = hello.downloadImage(movie.getId() + ".png");
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
         Image image = new Image(bais);
         imageView.setImage(image);
@@ -103,11 +101,13 @@ public class MovieDetailsController implements Initializable {
             }
         }
     }
+
     @FXML
     public void dismiss() {
         Stage stage = (Stage) imageView.getScene().getWindow();
         stage.close();
     }
+
     static class XCell extends ListCell<String> {
         HBox hbox = new HBox();
         Label label = new Label("(empty)");

@@ -22,10 +22,7 @@ import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;

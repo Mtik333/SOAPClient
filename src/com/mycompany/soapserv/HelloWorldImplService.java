@@ -13,7 +13,7 @@ import java.net.URL;
  * Generated source version: 2.2
  */
 @WebServiceClient(name = "HelloWorldImplService", targetNamespace = "http://soapserv.mycompany.com/", wsdlLocation = "http://localhost:8099/SOAPServer/HelloWorldImplService?wsdl")
-@HandlerChain(file="handler-chain.xml")
+@HandlerChain(file = "handler-chain.xml")
 public class HelloWorldImplService
         extends Service {
 

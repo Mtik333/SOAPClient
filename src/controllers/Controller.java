@@ -14,9 +14,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
-import javax.xml.ws.Service;
 import javax.xml.ws.handler.MessageContext;
 import java.io.IOException;
 import java.net.URL;
@@ -61,8 +59,7 @@ public class Controller implements Initializable {
             stage.setScene(new Scene(root1));
             stage.show();
             dismiss();
-        }
-        catch (InvalidPasswordException_Exception ipe) {
+        } catch (InvalidPasswordException_Exception ipe) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Invalid credentials");
             alert.setContentText("You entered invalid credentials. Try again");

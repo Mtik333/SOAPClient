@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_SEAT_RESERVED</OriginalElement>
+  <nodes>
+    <node x="0.0" y="223.0">ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_CLIENT</node>
+    <node x="283.0" y="592.0">ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_SEAT_RESERVED</node>
+    <node x="201.99999999999997" y="212.0">ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_SCREENING</node>
+    <node x="24.5" y="380.0">ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_RESERVATION</node>
+    <node x="404.25" y="33.0">ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_AUDITORIUM</node>
+    <node x="154.99999999999997" y="0.0">ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_MOVIE</node>
+    <node x="442.0" y="212.0">ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_SEAT</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_RESERVATION" target="ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_CLIENT">
+      <point x="-66.5" y="-81.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_SEAT_RESERVED" target="ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_SEAT">
+      <point x="56.0" y="-59.0" />
+      <point x="423.0" y="567.0" />
+      <point x="525.0" y="567.0" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_SEAT_RESERVED" target="ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_RESERVATION">
+      <point x="-56.0" y="-59.0" />
+      <point x="311.0" y="567.0" />
+      <point x="157.5" y="567.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_SEAT" target="ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_AUDITORIUM">
+      <point x="0.0" y="-59.0" />
+      <point x="40.25" y="48.0" />
+    </edge>
+    <edge source="ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_SCREENING" target="ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_AUDITORIUM">
+      <point x="55.0" y="-59.0" />
+      <point x="367.0" y="187.0" />
+      <point x="444.5" y="187.0" />
+      <point x="-40.25" y="48.0" />
+    </edge>
+    <edge source="ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_SCREENING" target="ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_MOVIE">
+      <point x="-55.0" y="-59.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_RESERVATION" target="ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_SCREENING">
+      <point x="66.5" y="-81.0" />
+      <point x="224.0" y="355.0" />
+      <point x="257.0" y="355.0" />
+      <point x="-55.0" y="59.0" />
+    </edge>
+    <edge source="ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_SEAT_RESERVED" target="ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_SCREENING">
+      <point x="0.0" y="-59.0" />
+      <point x="55.0" y="59.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7109589041095891" x="310.3294797687861" y="355.0" />
+  <SelectedNodes>
+    <node>ef017910-92bd-4809-926f-14fbad592b0e.TABLE:APP.RSI_SEAT_RESERVED</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+

@@ -10,9 +10,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -36,15 +33,15 @@ public class ReservationDetails implements Initializable {
         numbers.getSelectionModel().select(0);
         System.out.println(seat.getId());
         button.setOnMouseClicked(event -> {
-            createReservation();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Reservation status");
-            alert.setHeaderText("Reservation successful");
-            alert.setContentText("You reserved tickets for screening successfully");
-            alert.showAndWait();
-            Stage stage_root = (Stage) numbers.getScene().getWindow();
-            stage_root.close();
-            }
+                    createReservation();
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Reservation status");
+                    alert.setHeaderText("Reservation successful");
+                    alert.setContentText("You reserved tickets for screening successfully");
+                    alert.showAndWait();
+                    Stage stage_root = (Stage) numbers.getScene().getWindow();
+                    stage_root.close();
+                }
         );
     }
 
@@ -63,6 +60,6 @@ public class ReservationDetails implements Initializable {
     }
 
     private RsiSeat findSeatByNumber(HelloWorld hello, int number) {
-        return hello.getSeats().stream().filter(seat -> ((seat.getSeatNumber()-1)*5+seat.getSeatRow()) == number).findFirst().get();
+        return hello.getSeats().stream().filter(seat -> ((seat.getSeatNumber() - 1) * 5 + seat.getSeatRow()) == number).findFirst().get();
     }
 }

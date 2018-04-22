@@ -22,12 +22,9 @@ import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -37,9 +34,10 @@ import java.util.stream.Collectors;
 public class MyReservationsController implements Initializable {
 
     static List<RsiReservation> reservationList;
+    static ObservableList<String> list;
     @FXML
     public ListView listView;
-    static ObservableList<String> list;
+
     public static RsiReservation findReservation(String id) {
         int reservationId = Integer.parseInt(id.replace("-", ""));
         for (RsiReservation rsiReservation : reservationList) {
@@ -62,7 +60,7 @@ public class MyReservationsController implements Initializable {
             sb.append(rsiReservation.getScreeningId().getMovieId().getTitle() + "\t");
             Date date = rsiReservation.getScreeningId().getScreeningStart().toGregorianCalendar().getTime();
             DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
-            String formattedDate  = formatter.format(date);
+            String formattedDate = formatter.format(date);
             sb.append(formattedDate);
             reservations.add(sb.toString());
         }
@@ -135,9 +133,9 @@ public class MyReservationsController implements Initializable {
                 @Override
                 public void handle(ActionEvent event) {
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Confirmation Dialog");
-                    alert.setHeaderText("Look, a Confirmation Dialog");
-                    alert.setContentText("Are you ok with this?");
+                    alert.setTitle("Delete reservation");
+                    alert.setHeaderText("Delete reservation");
+                    alert.setContentText("Do you really want to delete reservation? You can't undo it");
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.get() == ButtonType.OK) {
                         HelloWorldImplService implService = new HelloWorldImplService();
