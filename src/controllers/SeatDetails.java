@@ -4,6 +4,7 @@ import com.mycompany.soapserv.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import javax.xml.namespace.QName;
@@ -50,6 +52,8 @@ public class SeatDetails implements Initializable {
             Pane pane = new Pane();
             Label label = new Label();
             label.setText(String.valueOf((seats.get(i).getSeatNumber() - 1) * 5 + seats.get(i).getSeatRow()));
+            label.setTextFill(Color.web("#ffffff"));
+            label.setAlignment(Pos.CENTER);
             pane.getChildren().add(label);
             if (test2(seats.get(i))) {
                 pane.setStyle("-fx-background-color: red;");
@@ -70,7 +74,7 @@ public class SeatDetails implements Initializable {
 
     public boolean test2(RsiSeat seat) {
         for (RsiSeatReserved screeningSeatReserver : seatReservedsFromScreening) {
-            if (screeningSeatReserver.getSeatId().getId().equals(seat.getId()))
+            if (screeningSeatReserver.getSeatId().getId().intValue()==seat.getId().intValue())
                 return true;
         }
         return false;
@@ -98,7 +102,7 @@ public class SeatDetails implements Initializable {
             e.printStackTrace();
         }
         Stage stage = new Stage();
-        stage.setTitle("Seat details");
+        stage.setTitle("Create reservation");
         stage.setScene(new Scene(root1));
         stage.showAndWait();
     }

@@ -75,10 +75,20 @@ public class FXMLDocumentController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Stage stage = new Stage();
-        stage.setTitle("My reservations");
-        stage.setScene(new Scene(root1));
-        stage.showAndWait();
+        Stage stage_root = (Stage) listView.getScene().getWindow();
+        stage_root.setTitle("RSI Cinema - my reservations");
+        stage_root.setScene(new Scene(root1));
+//
+//        Stage stage = new Stage();
+//        stage.setTitle("My reservations");
+//        stage.setScene(new Scene(root1));
+        stage_root.showAndWait();
+    }
+
+    @FXML
+    public void dismiss() {
+        Stage stage = (Stage) listView.getScene().getWindow();
+        stage.close();
     }
 
     static class XCell extends ListCell<String> {

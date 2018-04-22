@@ -110,7 +110,11 @@ public class MovieDetailsController implements Initializable {
             }
         }
     }
-
+    @FXML
+    public void dismiss() {
+        Stage stage = (Stage) imageView.getScene().getWindow();
+        stage.close();
+    }
     static class XCell extends ListCell<String> {
         HBox hbox = new HBox();
         Label label = new Label("(empty)");

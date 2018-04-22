@@ -28,10 +28,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MyReservationsController implements Initializable {
@@ -39,7 +38,7 @@ public class MyReservationsController implements Initializable {
     static List<RsiReservation> reservationList;
     @FXML
     public ListView listView;
-
+    static ObservableList<String> list;
     public static RsiReservation findReservation(String id) {
         int reservationId = Integer.parseInt(id.replace("-", ""));
         for (RsiReservation rsiReservation : reservationList) {
@@ -67,10 +66,13 @@ public class MyReservationsController implements Initializable {
             StringBuilder sb = new StringBuilder();
             sb.append(rsiReservation.getId() + "\t");
             sb.append(rsiReservation.getScreeningId().getMovieId().getTitle() + "\t");
-            sb.append(rsiReservation.getScreeningId().getScreeningStart());
+            Date date = rsiReservation.getScreeningId().getScreeningStart().toGregorianCalendar().getTime();
+            DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
+            String formattedDate  = formatter.format(date);
+            sb.append(formattedDate);
             reservations.add(sb.toString());
         }
-        ObservableList<String> list = FXCollections.observableArrayList(reservations);
+        list = FXCollections.observableArrayList(reservations);
         listView.setItems(list);
         listView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
             @Override
@@ -78,6 +80,27 @@ public class MyReservationsController implements Initializable {
                 return new XCell();
             }
         });
+    }
+
+    @FXML
+    private void goToMyReservations() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxmls/FXMLDocument.fxml"));
+        Parent root1 = null;
+        try {
+            root1 = (Parent) fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage_root = (Stage) listView.getScene().getWindow();
+        stage_root.setTitle("RSI Cinema - Movies");
+        stage_root.setScene(new Scene(root1));
+        stage_root.showAndWait();
+    }
+
+    @FXML
+    public void dismiss() {
+        Stage stage = (Stage) listView.getScene().getWindow();
+        stage.close();
     }
 
     static class XCell extends ListCell<String> {
@@ -93,6 +116,7 @@ public class MyReservationsController implements Initializable {
 
         public XCell() {
             super();
+            hbox.setSpacing(2);
             hbox.getChildren().addAll(label, label2, label3, pane, button, editButton, cancelButton);
             HBox.setHgrow(pane, Priority.ALWAYS);
             editButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -133,6 +157,8 @@ public class MyReservationsController implements Initializable {
                         HelloWorld hello = service.getPort(HelloWorld.class);
                         RsiReservation test = findReservation(label.getText());
                         hello.removeReservation(test);
+                        int index = reservationList.indexOf(test);
+                        list.remove(index);
                     } else {
                         alert.close();
                     }
@@ -163,7 +189,7 @@ public class MyReservationsController implements Initializable {
                         BorderPane borderPane = new BorderPane(m_PDFViewer);
                         Scene scene = new Scene(borderPane);
                         Stage stage = new Stage();
-                        stage.setTitle("JavaFX PDFViewer - Qoppa Software");
+                        stage.setTitle("Reservation in PDF");
                         stage.setScene(scene);
                         stage.centerOnScreen();
                         stage.show();
@@ -185,8 +211,8 @@ public class MyReservationsController implements Initializable {
                 lastItem = item;
                 label.setText(item != null ? item : "<null>");
                 String[] text = label.getText().split("\t");
-                label.setText(text[0] + "-");
-                label2.setText(text[1] + "-");
+                label.setText(text[0]);
+                label2.setText(text[1]);
                 label3.setText(text[2]);
                 setGraphic(hbox);
             }

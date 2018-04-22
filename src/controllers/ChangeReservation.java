@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.stage.Stage;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
@@ -56,4 +57,10 @@ public class ChangeReservation implements Initializable {
             }
         });
     }
+    @FXML
+    public void dismiss() {
+        Stage stage = (Stage) choiceBox.getScene().getWindow();
+        stage.close();
+    }
+
 }
