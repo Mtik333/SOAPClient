@@ -1,9 +1,6 @@
 package controllers;
 
-import com.mycompany.soapserv.HelloWorld;
-import com.mycompany.soapserv.RsiAuditorium;
-import com.mycompany.soapserv.RsiMovie;
-import com.mycompany.soapserv.RsiScreening;
+import com.mycompany.soapserv.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -67,15 +64,8 @@ public class MovieDetailsController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mapScreeningAuditorium = new HashMap<>();
-        URL url = null;
-        try {
-            url = new URL("https://localhost:8443/SOAPServer/HelloWorldImplService?wsdl");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
-        Service service = Service.create(url, qname);
-        HelloWorld hello = service.getPort(HelloWorld.class);
+        HelloWorldImplService implService = new HelloWorldImplService();
+        HelloWorld hello = implService.getHelloWorldImplPort();
         byte[] bytes = hello.downloadImage(movie.getId() +".png");
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
         Image image = new Image(bais);

@@ -1,6 +1,7 @@
 package controllers;
 
 import com.mycompany.soapserv.HelloWorld;
+import com.mycompany.soapserv.HelloWorldImplService;
 import com.mycompany.soapserv.RsiMovie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,15 +44,8 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        URL url = null;
-        try {
-            url = new URL("https://localhost:8443/SOAPServer/HelloWorldImplService?wsdl");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
-        Service service = Service.create(url, qname);
-        HelloWorld hello = service.getPort(HelloWorld.class);
+        HelloWorldImplService implService = new HelloWorldImplService();
+        HelloWorld hello = implService.getHelloWorldImplPort();
         List<RsiMovie> movieList = hello.getMovies();
         movies = movieList;
         List<String> titles = FXCollections.observableArrayList(movieList.stream().map(RsiMovie::getTitle)
@@ -116,9 +110,6 @@ public class FXMLDocumentController implements Initializable {
                     Stage stage = new Stage();
                     stage.setTitle("Movie details");
                     stage.setScene(new Scene(root1));
-//                    MovieDetailsController controller =
-//                            fxmlLoader.<MovieDetailsController>getController();
-//                    controller.setMovie(FXMLDocumentController.findMovie(lastItem));
                     stage.showAndWait();
                 }
             });

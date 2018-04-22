@@ -50,15 +50,8 @@ public class ReservationDetails implements Initializable {
 
     private void createReservation() {
         int number = (int) numbers.getSelectionModel().getSelectedItem();
-        URL url = null;
-        try {
-            url = new URL("https://localhost:8443/SOAPServer/HelloWorldImplService?wsdl");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
-        Service service = Service.create(url, qname);
-        HelloWorld hello = service.getPort(HelloWorld.class);
+        HelloWorldImplService implService = new HelloWorldImplService();
+        HelloWorld hello = implService.getHelloWorldImplPort();
         for (int i = 0; i < number; i++) {
             RsiReservation rsiReservation = new RsiReservation();
             rsiReservation.setActive(true);

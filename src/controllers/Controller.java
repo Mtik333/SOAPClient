@@ -1,6 +1,7 @@
 package controllers;
 
 import com.mycompany.soapserv.HelloWorld;
+import com.mycompany.soapserv.HelloWorldImplService;
 import com.mycompany.soapserv.InvalidPasswordException_Exception;
 import com.mycompany.soapserv.RsiClient;
 import javafx.fxml.FXML;
@@ -40,12 +41,10 @@ public class Controller implements Initializable {
         String username2 = username.getText();
         String password2 = password.getText();
         System.out.println("xd");
-        URL url = new URL("https://localhost:8443/SOAPServer/HelloWorldImplService?wsdl");
-        QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
-        Service service = Service.create(url, qname);
-        HelloWorld hello = service.getPort(HelloWorld.class);
+        HelloWorldImplService implService = new HelloWorldImplService();
+        HelloWorld hello = implService.getHelloWorldImplPort();
         Map<String, Object> req_ctx = ((BindingProvider) hello).getRequestContext();
-        req_ctx.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "https://localhost:8443/SOAPServer/HelloWorldImplService?wsdl");
+        req_ctx.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:8111/SOAPServer/HelloWorldImplService?wsdl");
         Map<String, List<String>> headers = new HashMap<String, List<String>>();
         headers.put("Username", Collections.singletonList(username2));
         headers.put("Password", Collections.singletonList(password2));

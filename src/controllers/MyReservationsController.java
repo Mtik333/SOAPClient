@@ -1,6 +1,7 @@
 package controllers;
 
 import com.mycompany.soapserv.HelloWorld;
+import com.mycompany.soapserv.HelloWorldImplService;
 import com.mycompany.soapserv.RsiReservation;
 import com.qoppa.pdf.PDFException;
 import com.qoppa.pdfViewerFX.PDFViewer;
@@ -51,15 +52,8 @@ public class MyReservationsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        URL url = null;
-        try {
-            url = new URL("https://localhost:8443/SOAPServer/HelloWorldImplService?wsdl");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
-        Service service = Service.create(url, qname);
-        HelloWorld hello = service.getPort(HelloWorld.class);
+        HelloWorldImplService implService = new HelloWorldImplService();
+        HelloWorld hello = implService.getHelloWorldImplPort();
         reservationList = hello.getReservations().stream().filter(reservation -> reservation.getClientReserverId().getId().intValue() == Everything.rsiClient.getId().intValue()).collect(Collectors.toList());
         List<String> reservations = new ArrayList<>();
         for (RsiReservation rsiReservation : reservationList) {
@@ -146,15 +140,8 @@ public class MyReservationsController implements Initializable {
                     alert.setContentText("Are you ok with this?");
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.get() == ButtonType.OK) {
-                        URL url = null;
-                        try {
-                            url = new URL("https://localhost:8443/SOAPServer/HelloWorldImplService?wsdl");
-                        } catch (MalformedURLException e) {
-                            e.printStackTrace();
-                        }
-                        QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
-                        Service service = Service.create(url, qname);
-                        HelloWorld hello = service.getPort(HelloWorld.class);
+                        HelloWorldImplService implService = new HelloWorldImplService();
+                        HelloWorld hello = implService.getHelloWorldImplPort();
                         RsiReservation test = findReservation(label.getText());
                         hello.removeReservation(test);
                         int index = reservationList.indexOf(test);
@@ -169,15 +156,8 @@ public class MyReservationsController implements Initializable {
                 @Override
                 public void handle(ActionEvent event) {
                     //https://kbdeveloper.qoppa.com/javafx-pdf-viewer/
-                    URL url = null;
-                    try {
-                        url = new URL("https://localhost:8443/SOAPServer/HelloWorldImplService?wsdl");
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
-                    }
-                    QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
-                    Service service = Service.create(url, qname);
-                    HelloWorld hello = service.getPort(HelloWorld.class);
+                    HelloWorldImplService implService = new HelloWorldImplService();
+                    HelloWorld hello = implService.getHelloWorldImplPort();
                     byte[] bais = hello.pdfReservation(reservationList.get(0));
                     File file = new File("itext-test.pdf");
                     FileOutputStream fileout = null;

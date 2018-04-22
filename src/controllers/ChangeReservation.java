@@ -1,9 +1,6 @@
 package controllers;
 
-import com.mycompany.soapserv.HelloWorld;
-import com.mycompany.soapserv.RsiReservation;
-import com.mycompany.soapserv.RsiSeat;
-import com.mycompany.soapserv.RsiSeatReserved;
+import com.mycompany.soapserv.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -32,15 +29,8 @@ public class ChangeReservation implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        URL url = null;
-        try {
-            url = new URL("https://localhost:8443/SOAPServer/HelloWorldImplService?wsdl");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
-        Service service = Service.create(url, qname);
-        HelloWorld hello = service.getPort(HelloWorld.class);
+        HelloWorldImplService implService = new HelloWorldImplService();
+        HelloWorld hello = implService.getHelloWorldImplPort();
         seatReservedsFromScreening = hello.getReservedSeats().stream().filter(rsiSeatReserved -> rsiSeatReserved.getScreeningId().getId().equals(reservation.getScreeningId().getId())).collect(Collectors.toList());
         seats = hello.getSeats();
         for (RsiSeatReserved seat : seatReservedsFromScreening) {
