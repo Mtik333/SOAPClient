@@ -4,9 +4,11 @@ import com.mycompany.soapserv.*;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
@@ -31,10 +33,18 @@ public class ReservationDetails implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         seatId.setText(seat.getId().toString());
         numbers.getItems().addAll(FXCollections.observableArrayList(1, 2, 3));
+        numbers.getSelectionModel().select(0);
         System.out.println(seat.getId());
         button.setOnMouseClicked(event -> {
-                    createReservation();
-                }
+            createReservation();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Reservation status");
+            alert.setHeaderText("Reservation successful");
+            alert.setContentText("You reserved tickets for screening successfully");
+            alert.showAndWait();
+            Stage stage_root = (Stage) numbers.getScene().getWindow();
+            stage_root.close();
+            }
         );
     }
 
@@ -60,6 +70,6 @@ public class ReservationDetails implements Initializable {
     }
 
     private RsiSeat findSeatByNumber(HelloWorld hello, int number) {
-        return hello.getSeats().stream().filter(seat -> seat.getId() == number).findFirst().get();
+        return hello.getSeats().stream().filter(seat -> ((seat.getSeatNumber()-1)*5+seat.getSeatRow()) == number).findFirst().get();
     }
 }

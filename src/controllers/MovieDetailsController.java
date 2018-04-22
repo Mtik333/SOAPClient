@@ -45,6 +45,8 @@ public class MovieDetailsController implements Initializable {
     @FXML
     public TextField actorsTextField;
     @FXML
+    public Label movieDescription;
+    @FXML
     public ListView screeningsListView;
 
     private static Map.Entry<RsiScreening, RsiAuditorium> findScreening(String name) {
@@ -74,13 +76,14 @@ public class MovieDetailsController implements Initializable {
         QName qname = new QName("http://soapserv.mycompany.com/", "HelloWorldImplService");
         Service service = Service.create(url, qname);
         HelloWorld hello = service.getPort(HelloWorld.class);
-        byte[] bytes = hello.downloadImage("project.png");
+        byte[] bytes = hello.downloadImage(movie.getId() +".png");
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
         Image image = new Image(bais);
         imageView.setImage(image);
         titleTextField.setText(movie.getTitle());
         directorTextField.setText(movie.getDirector());
         actorsTextField.setText(movie.getActors());
+        movieDescription.setText(movie.getDescription());
         List<RsiScreening> screeningCollection = hello.getScreenings().stream().filter(rsiScreening -> rsiScreening.getMovieId().getId().equals(movie.getId())).collect(Collectors.toList());
         for (RsiScreening rsiScreening : screeningCollection) {
             getAuditoriumNames(hello, rsiScreening);

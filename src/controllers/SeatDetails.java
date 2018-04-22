@@ -105,6 +105,8 @@ public class SeatDetails implements Initializable {
         stage.setTitle("Create reservation");
         stage.setScene(new Scene(root1));
         stage.showAndWait();
+        Stage stage_root = (Stage) gridPane.getScene().getWindow();
+        stage_root.close();
     }
 
 }
