@@ -9,7 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.CustomProxySelector;
 
+import java.net.ProxySelector;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,6 +30,7 @@ public class ReservationDetails implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         seatId.setText(seat.getId().toString());
         numbers.getItems().addAll(FXCollections.observableArrayList(1, 2, 3));
         numbers.getSelectionModel().select(0);

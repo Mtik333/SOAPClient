@@ -14,8 +14,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import sample.CustomProxySelector;
 
 import java.io.IOException;
+import java.net.ProxySelector;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +35,7 @@ public class SeatDetails implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         HelloWorldImplService implService = new HelloWorldImplService();
         HelloWorld hello = implService.getHelloWorldImplPort();
         seatReservedsFromScreening = hello.getReservedSeats().stream().filter(rsiSeatReserved -> rsiSeatReserved.getScreeningId().getId().equals(rsiScreening.getId())).collect(Collectors.toList());

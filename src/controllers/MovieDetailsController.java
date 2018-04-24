@@ -18,10 +18,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import sample.CustomProxySelector;
 
 import javax.xml.ws.soap.MTOMFeature;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.net.ProxySelector;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -48,7 +50,7 @@ public class MovieDetailsController implements Initializable {
         for (Map.Entry<RsiScreening, RsiAuditorium> entry : mapScreeningAuditorium.entrySet()) {
             String[] test2 = name.split("\t");
             String test = test2[0];
-            if (entry.getValue().getName().contentEquals(test)) {
+            if (entry.getKey().getAuditoriumId().getName().contentEquals(test)) {
                 SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm");
                 String date;
                 date = sdf.format(entry.getKey().getScreeningStart().toGregorianCalendar().getTime());
@@ -61,6 +63,7 @@ public class MovieDetailsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         mapScreeningAuditorium = new HashMap<>();
         HelloWorldImplService implService = new HelloWorldImplService();
         HelloWorld hello = implService.getHelloWorldImplPort(new MTOMFeature());
@@ -81,7 +84,7 @@ public class MovieDetailsController implements Initializable {
         String date;
         for (Map.Entry<RsiScreening, RsiAuditorium> entry : mapScreeningAuditorium.entrySet()) {
             date = sdf.format(entry.getKey().getScreeningStart().toGregorianCalendar().getTime());
-            titles.add(entry.getValue().getName() + "\t\t" + date);
+            titles.add(entry.getKey().getAuditoriumId().getName() + "\t\t" + date);
         }
         ObservableList<String> list = FXCollections.observableArrayList(titles);
         screeningsListView.setItems(list);
@@ -124,7 +127,7 @@ public class MovieDetailsController implements Initializable {
                 public void handle(ActionEvent event) {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxmls/SeatDetails.fxml"));
                     SeatDetails.rsiScreening = findScreening(lastItem).getKey();
-                    SeatDetails.rsiAuditorium = findScreening(lastItem).getValue();
+                    SeatDetails.rsiAuditorium = findScreening(lastItem).getKey().getAuditoriumId();
                     Parent root1 = null;
                     try {
                         root1 = (Parent) fxmlLoader.load();

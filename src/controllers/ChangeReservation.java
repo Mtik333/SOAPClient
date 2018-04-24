@@ -9,7 +9,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
+import sample.CustomProxySelector;
 
+import java.net.ProxySelector;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,7 @@ public class ChangeReservation implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         HelloWorldImplService implService = new HelloWorldImplService();
         HelloWorld hello = implService.getHelloWorldImplPort();
         seatReservedsFromScreening = hello.getReservedSeats().stream().filter(rsiSeatReserved -> rsiSeatReserved.getScreeningId().getId().equals(reservation.getScreeningId().getId())).collect(Collectors.toList());
@@ -40,7 +43,7 @@ public class ChangeReservation implements Initializable {
         changeButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                RsiSeat newSeat = seats.stream().filter(rsiSeat -> rsiSeat.getId().intValue() == (int) choiceBox.getSelectionModel().getSelectedItem()).findFirst().get();
+                RsiSeat newSeat = seats.stream().filter(rsiSeat -> ((rsiSeat.getSeatNumber()-1)*5+rsiSeat.getSeatRow()) == (int) choiceBox.getSelectionModel().getSelectedItem()).findFirst().get();
                 hello.changeReservation(reservation, newSeat);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Reserved seat");

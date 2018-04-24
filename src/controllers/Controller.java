@@ -13,10 +13,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.CustomProxySelector;
 
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.handler.MessageContext;
 import java.io.IOException;
+import java.net.ProxySelector;
 import java.net.URL;
 import java.util.*;
 
@@ -36,6 +38,7 @@ public class Controller implements Initializable {
 
     @FXML
     public void tryLogin() throws IOException {
+
         String username2 = username.getText();
         String password2 = password.getText();
         System.out.println("xd");

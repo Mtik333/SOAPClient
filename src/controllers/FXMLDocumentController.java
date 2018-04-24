@@ -21,8 +21,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import sample.CustomProxySelector;
 
 import java.io.IOException;
+import java.net.ProxySelector;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +43,7 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         HelloWorldImplService implService = new HelloWorldImplService();
         HelloWorld hello = implService.getHelloWorldImplPort();
         List<RsiMovie> movieList = hello.getMovies();

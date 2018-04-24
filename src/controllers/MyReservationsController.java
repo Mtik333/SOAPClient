@@ -21,10 +21,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import sample.CustomProxySelector;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.ProxySelector;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -50,6 +52,7 @@ public class MyReservationsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         HelloWorldImplService implService = new HelloWorldImplService();
         HelloWorld hello = implService.getHelloWorldImplPort();
         reservationList = hello.getReservations().stream().filter(reservation -> reservation.getClientReserverId().getId().intValue() == Everything.rsiClient.getId().intValue()).collect(Collectors.toList());
@@ -156,7 +159,8 @@ public class MyReservationsController implements Initializable {
                     //https://kbdeveloper.qoppa.com/javafx-pdf-viewer/
                     HelloWorldImplService implService = new HelloWorldImplService();
                     HelloWorld hello = implService.getHelloWorldImplPort();
-                    byte[] bais = hello.pdfReservation(reservationList.get(0));
+                    RsiReservation test = findReservation(label.getText());
+                    byte[] bais = hello.pdfReservation(test);
                     File file = new File("itext-test.pdf");
                     FileOutputStream fileout = null;
                     try {
